@@ -48,6 +48,26 @@ nav .navbar-left{
 	height:500px;
 	background-image: linear-gradient(to right,rgba(38,70,83,.4),rgba(38,70,83,.8));
 }
+.jumbotron-categories{
+	position: relative;
+	z-index: 0;
+	top:-50px;
+	width: 100%;
+	height:500px;
+	margin-top:-30px !important;
+	background-image: url('../img/jumbotron-categories.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.jumbotron-categories::after{
+	position: absolute;
+	content:'';
+	top:0;
+	z-index: 0;
+	width:100%;
+	height:500px;
+	background-image: linear-gradient(to right,rgba(38,70,83,.4),rgba(38,70,83,.8));
+}
 .jumbotron-title{
 	display: flex;
 	justify-content: center;
@@ -155,6 +175,7 @@ nav .navbar-left{
 	border-radius: 5px;
 	background-repeat: no-repeat;
 	background-size: cover;
+	box-shadow: 0px 5px 10px rgba(38,70,83,.5);
 }
 .card-category::after{
 	content:'';
@@ -487,10 +508,10 @@ ul.list-footer-bottom li{
 	}
 
 	/* Jumbotron */
-	.jumbotron-home{
+	.jumbotron-home,.jumbotron-categories{
 		height:606px;
 	}
-	.jumbotron-home::after{
+	.jumbotron-home::after,.jumbotron-categories::after{
 		height:606px;
 	}
 	.jumbotron-title{

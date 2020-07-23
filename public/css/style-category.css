@@ -1,0 +1,53 @@
+/* === SETUP === */
+/* Fonts */
+@font-face{
+	font-family: montserrat;
+	src: url('../font/Montserrat-Light.ttf');
+}
+@font-face{
+	font-family: montserrat;
+	src: url('../font/Montserrat-Bold.ttf');
+	font-weight: bold;
+}
+@font-face{
+	font-family: roboto;
+	src: url('../font/Roboto-Medium.ttf');
+}
+@font-face{
+	font-family: roboto;
+	src: url('../font/Roboto-Bold.ttf');
+}
+
+/* Mobile */
+.jumbotron-title{
+	top:45%;
+}
+.jumbotron-subtitle{
+	top:45%;
+}
+
+.category-group{
+	margin-top: 40px !important;	
+}
+.category-title{
+	font-family: roboto;
+	color:#264653ff;
+	font-size: 20px;
+	margin-left: 15px;
+	margin-bottom:0px;
+	font-weight: bold;
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px){
+	.category-group{
+		margin-top: 50px !important;	
+	}
+	.category-title{
+		margin-left: 0px;
+		font-size:24px;
+	}
+}
+
+/*DarkBlue : #264653ff;;
+Green    : #2a9d8fff;

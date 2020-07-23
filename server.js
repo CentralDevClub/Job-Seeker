@@ -9,6 +9,10 @@ app.get('/',function(req,res){
 	res.render('home');
 });
 
+app.get('/categories',function(req,res){
+	res.render('categories');
+});
+
 const port = 8000;
 app.listen(port);
 console.log(`Website Successfully Deployed! Go to : http//localhost:${port}`);
