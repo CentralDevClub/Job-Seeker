@@ -1,0 +1,113 @@
+*{
+    margin:0;
+}
+
+@font-face{
+	font-family: montserrat;
+	src: url('./font/Montserrat-Light.ttf');
+}
+@font-face{
+	font-family: montserrat;
+	src: url('./font/Montserrat-Bold.ttf');
+	font-weight: bold;
+}
+@font-face{
+	font-family: roboto;
+	src: url('./font/Roboto-Medium.ttf');
+}
+
+body{
+    font-family: montserrat;
+}
+
+/* Navbar */
+nav{
+    background-color: #264653ff;
+}
+nav .navbar-left{
+    margin-top:0px;
+}
+.navbar-right li:nth-child(2){
+    display: none;
+}
+
+.navbar{
+    padding: 20px;
+}
+
+.logo-icons{
+    display: flex;
+    flex-direction: column;
+    height: 20vmax;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: montserrat;
+    font-style: italic;
+    
+}
+
+.logo-icons h1{
+    width: 60%;
+    font-size: 70px;
+    color: #264653ff;
+    font-weight: bolder;
+}
+
+.logo-icons h2{
+    color: rgb(82, 110, 121);
+    width: 80%;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+form{
+    width: 80%;
+    margin: auto;
+    height: 400px;
+    padding: 1em;
+    font-weight: bold;
+}
+
+.forgot-pass{
+    font-weight: lighter;
+    display: flex;
+    justify-content: end ;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.mata{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    cursor: pointer;
+}
+
+.eye{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+}
+
+#formGroupExampleInput2{
+    width: 100%;
+}
+
+footer{
+    margin-top: 0;
+}
+
+
+@media screen and (max-width: 768px){
+    .logo-icons{
+        height: 40vh;
+    }
+    form{
+        width: 90%;
+    }
+}
