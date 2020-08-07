@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSSs -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/style-register-company.css">
+
+    <title>Register</title>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <%- include('templates/navbar'); -%>
+
+   <!-- Jumbroton -->
+    <div class="jumbotron-home">
+        <h1 class="jumbotron-title">Register Your Account!</h1>
+        <h1 class="jumbotron-subtitle">as Company</h1>
+    </div>
+   <!-- End Jumbroton -->
+   
+   <!--Main -->
+   <div class="container" id="main-container">
+       <!-- button change -->
+       <div class="button">
+            <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                <a href="/register-employer" type="button" class="btn btn-light">I'm an Employer</a>
+                <a href="/register-company" type="button" id="btn-emp" class="btn btn-info">I'm a Company</a>
+            </div>
+        </div>
+        <!-- end button change -->
+      
+        <div class="fill">
+            <h3>Please fill the requirements</h3>
+        </div>
+
+      <!--form-->
+      <form>
+        
+        <div class="form-group ">
+            <label for="inputFirstName">Company Name</label>
+            <input type="text" class="form-control" id="inputFirstName" placeholder="Enter the company name">
+        </div>
+
+        <div class="form-group">
+            <label for="inputProfilVid">Company Profile Video</label><br>
+            <div class="input-group">
+                <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" placeholder="Upload your company profile video">
+                <label class="custom-file-label" for="inputGroupFile01">Upload your company profile video</label>
+                </div>
+            </div>
+            <span>  You can change the video later on</span>
+        </div>
+
+        <div class="form-group">
+            <label for="Company Description">Company Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter the company description"></textarea>
+            <span>  You can edit it later on</span>
+        </div>
+
+        <div class="form-group">
+            <label for="Company Goals">Company Goals</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter the company goals"></textarea>
+            <span>  You can edit it later on</span>
+        </div>
+
+        <div class="form-group ">
+            <label for="inputLastName">Company Address</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Enter the company address">
+        </div>
+        
+        <div class="form-group">
+          <label for="inputEmail">Company Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="Enter the company email">
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail">Company Website</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="Enter the company website">
+          </div>
+
+        <div class="form-group">
+          <label for="inputPassword">Company Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Enter the company password">
+        </div>
+
+        <div class="form-group">
+          <label for="inputSecurityQues">Security Question</label>
+          <select id="inputSecurityQues" class="form-control">
+            <option selected>Select Security Question</option>
+            <option>...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="inputSecurityAns">Answer Security Question</label>
+          <input type="text" class="form-control" id="inputSecurityAns" placeholder="Answer your security question">
+        </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              I agree with the terms of service and privacy policy
+            </label>
+          </div>
+
+        </div>
+        <button type="button" class="btn btn-info btn-block">Create Account</button>
+      </form>
+      <!--end form-->
+
+   </div>
+   <!-- End Main -->
+
+  <!-- Footer -->
+	<footer>	
+		<div class="container footer-top">
+			<nav class="navbar navbar-expand-lg navbar-dark">
+			  <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNav">
+			    <ul class="navbar-nav">
+						<li class="nav-item">
+			    		<a class="nav-link p-brand" href="#">JOB SEEKER Inc.</a>
+			    	</li>	
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#">Categories</a>
+			      </li>
+			      <li class="nav-item">
+			      	<div class="btn-post-job">
+			      		<a class="nav-link" href="#">Post job</a>
+			      	</div>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Contact</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">About us</a>
+			      </li>
+			    </ul>
+			    <ul class="navbar-nav navbar-right">
+			    	<li class="nav-item active" style="margin: 0px !important;">
+			        <a class="nav-link" href="#">Login</a>
+			      </li>
+			      <li class="nav-item active" style="margin: 0px !important;">
+			        <a class="nav-link" href="#">|</a>
+			      </li>
+			      <li class="nav-item active" style="margin: 0px !important;">
+			        <a class="nav-link" href="#">Register</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+		</div>
+
+		<hr class="container">
+		<div class="container footer-bottom">
+			<p><i class="fas fa-copyright"></i>&nbsp;2020 Job Seeker Inc. Job Vacancy Corporation.</p>
+			<ul class="list-footer-bottom">
+				<li>Terms of Service</li>
+				<li>Privacy Policy</li>
+			</ul>
+		</div>
+		
+	</footer>
+	<!-- END OF Footer -->
+  <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/script-login.js"></script>
+    
+</body>
+</html>
