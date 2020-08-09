@@ -6,22 +6,26 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<!-- CSSs -->
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/all.css">
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/all.css">
 		<!-- <script src="https://kit.fontawesome.com/a6b535fb5d.js" crossorigin="anonymous"></script> -->
 		<title>Welcome Job Seeker</title>
 	</head>
 
 	<body>
 		<%- include('templates/navbar'); -%>
+		<% if (typeof data != 'undefined') { %>
 		<h1><%= data.username %></h1>
 		<p><%= data.email %></p>
+		<% }else{ %>
+			<h1>Sorry, user not found</h1>
+		<% } %>
 
 		<!-- JQuery and JSs -->
-		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	</body>
 </html>
