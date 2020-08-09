@@ -2,9 +2,28 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const knex = require('knex');
+
+// PostgreSQL Database
+const db = knex({
+	client: 'pg',
+	connection: {
+		host : 'localhost',
+		user : 'philip',
+		password : 'master',
+		database : 'jobseeker'
+	}
+});
+
+// Show all database
+function display_database(){
+	db.select('*').from('users').then(data => {
+		console.log(data);
+	});
+};
 
 // Folder public untuk static import
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.set('view engine','ejs');
 
 // BodyParser
@@ -12,36 +31,18 @@ app.use(bodyParser.json());
 urlencoded = bodyParser.urlencoded({ extended: false });
 app.use(urlencoded);
 
-// Database Sementara
-let database = {
-	users:[{
-		username:'Philip Purwoko',
-		email:'philippurwoko123@gmail.com',
-		password:'12345'
-	},
-	{
-		username:'man',
-		email:'man@man.com',
-		password:'12345'
-	}]
-}
-
-// Cek username pada database
-function cekUser(username){
-	let status = false;
-	let i = 0;
-	let index;
-	database.users.forEach(user=>{
-		if (user.username === username){
-			status = true;
-			index = i;
-		};
-		i++;
-	});
-	if (status){
-		return [true,index]
+// Get username sql database function
+function get_user(data,username=true){
+	if (username){
+		let user = db('users').where({
+			username:data,
+		}).select('*');
+		return user
 	} else{
-		return false
+		let user = db('users').where({
+			email:data,
+		}).select('*')
+		return user
 	};
 };
 
@@ -62,31 +63,32 @@ app.get('/login',(req,res)=>{
 	res.render('login',{status:'ok'});
 });
 
-app.get('/profile/',(req,res)=>{
-	res.render('profile',{data:req.query});
+app.get('/profile/:username',(req,res)=>{
+	get_user(req.params.username).then( user =>{
+		res.render('profile',{data:user[0]});
+	});
 });
 
 // POST request
 app.post('/register',urlencoded,function(req,res){
-	if (!cekUser(req.body.username)[0]){
-		database.users.push({username:req.body.username,email:req.body.email,password:req.body.password});
-		res.redirect(`profile?username=${req.body.username}&email=${req.body.email}`);
-	} else {
-		res.render('register',{status:'no'})
-	};
-	console.log(req.body);
-	console.log(cekUser(req.body.username));
+	const {username,email,password} = req.body;
+	db('users').returning('*').insert({
+		username : username,
+		email : email,
+		joined : new Date()
+	}).then(user =>{
+		res.redirect(`profile/${user[0].username}`)
+	}).catch(error => {
+		res.status(400).json(error)
+	})
 });
 
 app.post('/login',urlencoded,function(req,res){
-	if (cekUser(req.body.username)[0]){
-		// res.render('profile',{data:database.users[cekUser(req.body.username)[1]]});
-		res.redirect(`profile?username=${database.users[cekUser(req.body.username)[1]].username}&email=${database.users[cekUser(req.body.username)[1]].email}`);
-	} else {
-		res.render('login',{status:'no'})
-	};
-	console.log(database.users[cekUser(req.body.username)[1]])
-	console.log(req.body);
+	get_user(req.body.email,false).then( user =>{
+		res.redirect(`profile/${user[0].username}`);
+	}).catch(error => {
+		res.render('login',{status:'no'});
+	})
 });
 
 // Running Server
