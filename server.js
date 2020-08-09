@@ -54,6 +54,10 @@ app.get('/categories',function(req,res){
 	res.render('categories');
 });
 
+app.get('/joblist',(req,res)=>{
+	res.render('joblist');
+});
+
 app.get('/register',(req,res)=>{
 	res.render('register',{status:'ok'});
 });
