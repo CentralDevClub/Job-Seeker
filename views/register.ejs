@@ -6,10 +6,10 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<!-- CSSs -->
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/all.css">
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/all.css">
 		<!-- <script src="https://kit.fontawesome.com/a6b535fb5d.js" crossorigin="anonymous"></script> -->
 		<title>Welcome Job Seeker</title>
 	</head>
@@ -17,7 +17,7 @@
 	<body>
 		<%- include('templates/navbar'); -%>
 		<% if (status == 'no'){ %>
-			<p>Username already taken, please use another</p>
+			<p>Account already taken, please use another</p>
 		<% } %>
 		<form method="POST" id="from-register" action="/register">
 			<label for='username'>Your name</label>
@@ -30,8 +30,8 @@
 		</form>
 
 		<!-- JQuery and JSs -->
-		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	</body>
 </html>
