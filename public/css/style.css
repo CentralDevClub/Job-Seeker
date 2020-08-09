@@ -131,9 +131,11 @@ nav .navbar-left{
 }
 .btn-findjob a{
 	color:#fff;
-	pointer-events: none;
 	font-family:roboto;
 	font-size:14px;
+}
+.btn-findjob a:hover{
+	text-decoration: none;
 }
 .btn-findjob i{
 	color:#fff;
