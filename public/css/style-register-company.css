@@ -1,0 +1,241 @@
+*{
+    margin-top: 0;
+    top:0;
+}
+
+@font-face{
+	font-family: montserrat;
+	src: url('./font/Montserrat-Light.ttf');
+}
+@font-face{
+	font-family: montserrat;
+	src: url('./font/Montserrat-Bold.ttf');
+	font-weight: bold;
+}
+@font-face{
+	font-family: roboto;
+	src: url('./font/Roboto-Medium.ttf');
+}
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+
+nav{
+	position: relative;
+	z-index: 1;
+	margin-top: 5px;
+}
+.navbar-brand{
+	margin-right:50px;
+}
+.navbar-nav .nav-item a{
+	font-family: roboto;
+	font-weight: 700;
+	font-size:12px;
+	letter-spacing: .7px;
+	color:#fff !important;
+}
+.navbar-nav .nav-item{
+	margin-right: 40px;
+}
+.btn-post-job{
+	background-color: #2a9d8ffc;
+	border-radius: 30px;
+}
+.btn-post-job a{
+	padding:5px 15px !important;
+}
+.navbar-right{
+	margin-left: auto;
+}
+
+
+/* Jumbotron */
+
+.jumbotron-home{
+    top:-80px;
+    height: 600px;
+    font-family: montserrat;
+    font-style: italic;
+    position: relative;
+	z-index: 0;
+	width: 100%;
+    background-image: url('../img/jumbotron-home.png');
+    box-sizing: border-box;
+}
+
+.jumbotron-home::after{
+	position: absolute;
+	content:'';
+	top:0;
+	z-index: 0;
+	width:100%;
+	height:600px;
+	background-image: linear-gradient(to right,rgba(38,70,83,.4),rgba(38,70,83,.8));
+}
+
+.jumbotron-title{
+	display: flex;
+    justify-content: center;
+    text-align: center;
+	position: relative;
+	z-index: 1;
+	top:40%;
+	font-size: 70px;
+    font-weight: bold;
+	color:#fff;
+}
+
+.jumbotron-subtitle{
+	text-align: center;
+	position: relative;
+    z-index:1;
+	top:40%;
+    font-size:50px;
+    font-weight: bold;
+	color:#fff;
+	width: 60%;
+	letter-spacing: .5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.option{ 
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.option h2{
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.option button{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0px 5px 15px rgb(141, 176, 216);
+}
+
+/* MAin */
+#main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button{
+    width: 50%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+}
+
+.btn-group #btn-emp{
+    background-color: #264653ff;
+    border: none;
+}
+
+.fill{
+    width: 80%;
+    margin:10px auto;
+}
+
+.fill h3{
+    font-size: 18px;
+}
+
+form{
+    width: 80%;
+}
+
+form label{
+    font-weight: 500;
+}
+
+form span{
+    color: rgb(25, 54, 117);
+    font-size: 15px;
+}
+
+/* End Main */
+
+
+/* Footer */
+footer{
+	width:100%;
+	height:210px;
+	margin-top:80px;
+	background-color: #264653ff;
+}
+footer .navbar{
+	padding-left: 0px !important;
+	/*padding-right: -50px !important;*/
+}
+.footer-top{
+	padding-top:20px;
+}
+.footer-top .p-brand{
+	font-family: roboto;
+	font-size: 16px !important;
+	color:#fff;
+	margin-left:-30px;
+}
+footer hr{
+	background-color:#fff;
+	height:2px;
+	margin-bottom: 30px;
+}
+.footer-bottom{
+	font-family: roboto;
+	font-size: 16px;
+	color: #fff;
+}
+.footer-bottom p{
+	float: left;
+}
+ul.list-footer-bottom{
+	display: inline;
+	
+}
+ul.list-footer-bottom li:nth-child(1){
+	margin-right: 40px;
+}
+ul.list-footer-bottom li{
+	display: inline;
+}
+
+@media screen and (max-width: 768px){
+    .jumbotron-title{
+        top:30%;
+    }
+    .jumbotron-subtitle{
+        top:30%;
+    }
+    .button{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 512px){
+    .jumbotron-title{
+        font-size: 60px;
+    }
+    .jumbotron-subtitle{
+        font-size: 40px;
+    }
+    .button{
+        width: 80%;
+    }
+}

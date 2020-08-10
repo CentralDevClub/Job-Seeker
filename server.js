@@ -62,7 +62,7 @@ router.get('/',(req,res)=>{
 
 router.get('/categories',function(req,res){
 	sess = req.session;
-	res.render('categories');
+	res.render('categories',{sess:sess});
 });
 
 router.get('/register',(req,res)=>{
@@ -75,15 +75,28 @@ router.get('/login',(req,res)=>{
 	res.render('login',{sess:sess,status:'ok'});
 });
 
-router.get('/profile/:username',(req,res)=>{
+router.get('/profile',(req,res)=>{
 	sess = req.session;
-	get_user(req.params.username).then( user =>{
-		res.render('profile',{sess:sess,data:user[0]});
-	});
+	res.render('profile',{sess:sess});
+});
+
+router.get('/joblist',(req,res)=>{
+	sess = req.session;
+	res.render('joblist',{sess:sess});
+});
+
+router.get('/register-employer',(req,res)=>{
+	sess = req.session;
+	res.render('register-employer',{sess:sess,status:'ok'});
+});
+
+router.get('/register-company',(req,res)=>{
+	sess = req.session;
+	res.render('register-company',{sess:sess});
 });
 
 // POST request
-router.post('/register',urlencoded,function(req,res){
+router.post('/register-employer',urlencoded,function(req,res){
 	sess = req.session;
 	const {username,email,password} = req.body;
 	db('users').returning('*').insert({
@@ -93,9 +106,9 @@ router.post('/register',urlencoded,function(req,res){
 	}).then(user =>{
 		sess.user = user[0];
 		sess.email = user[0].email;
-		res.redirect(`profile/${user[0].username}`);
+		res.redirect(`profile`);
 	}).catch(error => {
-		res.status(400).render('register',{sess:sess,status:'no'})
+		res.status(400).render('register-employer',{sess:sess,status:'no'})
 	})
 });
 
@@ -104,7 +117,7 @@ router.post('/login',urlencoded,function(req,res){
 	get_user(req.body.email,false).then( user =>{
 		sess.user = user[0];
 		sess.email = user[0].email;
-		res.redirect(`profile/${user[0].username}`);
+		res.redirect(`profile`);
 	}).catch(error => {
 		res.render('login',{sess:sess,status:'no'});
 	})
