@@ -59,17 +59,6 @@ app.get('/register',(req,res)=>{
 	res.render('register',{status:'ok'});
 });
 
-<<<<<<< HEAD
-=======
-app.get('/register-employer',(req,res)=>{
-	res.render('register-employer');
-});
-
-app.get('/register-company',(req,res)=>{
-	res.render('register-company');
-});
-
->>>>>>> Register All Pages - moved to NodeJS environment
 app.get('/login',(req,res)=>{
 	res.render('login',{status:'ok'});
 });
