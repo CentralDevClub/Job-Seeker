@@ -17,11 +17,6 @@
 </head>
 
 <body>
-
-	<% if (status == 'no'){ %>
-	<p>Account not found, please register</p>
-	<% } %>
-
 	<!-- Navbar -->
 	<%- include('templates/navbar'); -%>
 
@@ -37,6 +32,9 @@
 		<div class="">
 			<div class="container">
 				<form method="POST" action="/login">
+					<% if (status == 'no'){ %>
+						<p class="alert alert-danger">Account not found, please register</p>
+					<% } %>
 					<div class="form-group">
 						<label for="email">Email</label>
 						<input type="text" class="form-control" id="email" placeholder="Enter your email" name='email'>

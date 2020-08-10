@@ -16,10 +16,10 @@
 
 	<body>
 		<%- include('templates/navbar'); -%>
-		<% if (status == 'no'){ %>
-			<p>Account already taken, please use another</p>
-		<% } %>
 		<form method="POST" id="from-register" action="/register">
+			<% if (status == 'no'){ %>
+				<p class="alert alert-danger">Account already taken, please use another</p>
+			<% } %>
 			<label for='username'>Your name</label>
 			<input type="text" placeholder="Username" id="username" name="username">
 			<label for='email'>Your email</label>
