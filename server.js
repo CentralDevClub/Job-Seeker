@@ -1,10 +1,27 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
+const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
 const knex = require('knex');
 
-// PostgreSQL Database
+// Folder public untuk static import
+app.use(express.static(path.join(__dirname, '/public')));
+
+// View engine dengan ejs
+app.set('view engine','ejs');
+
+// Session Login
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+var sess;
+
+// BodyParser
+app.use(bodyParser.json());
+urlencoded = bodyParser.urlencoded({ extended: false });
+app.use(urlencoded);
+
+// PostgreSQL Database Connection
 const db = knex({
 	client: 'pg',
 	connection: {
@@ -22,15 +39,6 @@ function display_database(){
 	});
 };
 
-// Folder public untuk static import
-app.use(express.static(path.join(__dirname, '/public')));
-app.set('view engine','ejs');
-
-// BodyParser
-app.use(bodyParser.json());
-urlencoded = bodyParser.urlencoded({ extended: false });
-app.use(urlencoded);
-
 // Get username sql database function
 function get_user(data,username=true){
 	if (username){
@@ -47,51 +55,63 @@ function get_user(data,username=true){
 };
 
 // Routing
-app.get('/',(req,res)=>{
-	res.render('landing');
+router.get('/',(req,res)=>{
+	sess = req.session;
+    res.render('landing',{sess:sess});
 });
 
-app.get('/categories',function(req,res){
+router.get('/categories',function(req,res){
+	sess = req.session;
 	res.render('categories');
 });
 
-app.get('/register',(req,res)=>{
-	res.render('register',{status:'ok'});
+router.get('/register',(req,res)=>{
+	sess = req.session;
+	res.render('register',{sess:sess,status:'ok'});
 });
 
-app.get('/login',(req,res)=>{
-	res.render('login',{status:'ok'});
+router.get('/login',(req,res)=>{
+	sess = req.session;
+	res.render('login',{sess:sess,status:'ok'});
 });
 
-app.get('/profile/:username',(req,res)=>{
+router.get('/profile/:username',(req,res)=>{
+	sess = req.session;
 	get_user(req.params.username).then( user =>{
-		res.render('profile',{data:user[0]});
+		res.render('profile',{sess:sess,data:user[0]});
 	});
 });
 
 // POST request
-app.post('/register',urlencoded,function(req,res){
+router.post('/register',urlencoded,function(req,res){
+	sess = req.session;
 	const {username,email,password} = req.body;
 	db('users').returning('*').insert({
 		username : username,
 		email : email,
 		joined : new Date()
 	}).then(user =>{
-		res.redirect(`profile/${user[0].username}`)
+		sess.user = user[0];
+		sess.email = user[0].email;
+		res.redirect(`profile/${user[0].username}`);
 	}).catch(error => {
-		res.status(400).json(error)
+		res.status(400).render('register',{sess:sess,status:'no'})
 	})
 });
 
-app.post('/login',urlencoded,function(req,res){
+router.post('/login',urlencoded,function(req,res){
+	sess = req.session;
 	get_user(req.body.email,false).then( user =>{
+		sess.user = user[0];
+		sess.email = user[0].email;
 		res.redirect(`profile/${user[0].username}`);
 	}).catch(error => {
-		res.render('login',{status:'no'});
+		res.render('login',{sess:sess,status:'no'});
 	})
 });
 
 // Running Server
 const port = 8000;
+app.use('/',router);
 app.listen(port);
 console.log(`Website Successfully Deployed! Go to : http//localhost:${port}`);
