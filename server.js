@@ -1,107 +1,130 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
+const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
+const knex = require('knex');
 
 // Folder public untuk static import
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
+
+// View engine dengan ejs
 app.set('view engine','ejs');
+
+// Session Login
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+var sess;
 
 // BodyParser
 app.use(bodyParser.json());
 urlencoded = bodyParser.urlencoded({ extended: false });
 app.use(urlencoded);
 
-// Database Sementara
-let database = {
-	users:[{
-		username:'Philip Purwoko',
-		email:'philippurwoko123@gmail.com',
-		password:'12345'
-	},
-	{
-		username:'man',
-		email:'man@man.com',
-		password:'12345'
-	}]
-}
+// PostgreSQL Database Connection
+const db = knex({
+	client: 'pg',
+	connection: {
+		host : 'localhost',
+		user : 'philip',
+		password : 'master',
+		database : 'jobseeker'
+	}
+});
 
-// Cek username pada database
-function cekUser(username){
-	let status = false;
-	let i = 0;
-	let index;
-	database.users.forEach(user=>{
-		if (user.username === username){
-			status = true;
-			index = i;
-		};
-		i++;
+// Show all database
+function display_database(){
+	db.select('*').from('users').then(data => {
+		console.log(data);
 	});
-	if (status){
-		return [true,index]
+};
+
+// Get username sql database function
+function get_user(data,username=true){
+	if (username){
+		let user = db('users').where({
+			username:data,
+		}).select('*');
+		return user
 	} else{
-		return false
+		let user = db('users').where({
+			email:data,
+		}).select('*')
+		return user
 	};
 };
 
 // Routing
-app.get('/',(req,res)=>{
-	res.render('landing');
+router.get('/',(req,res)=>{
+	sess = req.session;
+    res.render('landing',{sess:sess});
 });
 
-app.get('/categories',function(req,res){
-	res.render('categories');
+router.get('/categories',function(req,res){
+	sess = req.session;
+	res.render('categories',{sess:sess});
 });
 
-app.get('/joblist',(req,res)=>{
-	res.render('joblist');
+router.get('/register',(req,res)=>{
+	sess = req.session;
+	res.render('register',{sess:sess,status:'ok'});
 });
 
-app.get('/register',(req,res)=>{
-	res.render('register',{status:'ok'});
+router.get('/login',(req,res)=>{
+	sess = req.session;
+	res.render('login',{sess:sess,status:'ok'});
 });
 
-app.get('/register-employer',(req,res)=>{
-	res.render('register-employer');
+router.get('/profile',(req,res)=>{
+	sess = req.session;
+	res.render('profile',{sess:sess});
 });
 
-app.get('/register-company',(req,res)=>{
-	res.render('register-company');
+router.get('/joblist',(req,res)=>{
+	sess = req.session;
+	res.render('joblist',{sess:sess});
 });
 
-app.get('/login',(req,res)=>{
-	res.render('login',{status:'ok'});
+router.get('/register-employer',(req,res)=>{
+	sess = req.session;
+	res.render('register-employer',{sess:sess,status:'ok'});
 });
 
-app.get('/profile/',(req,res)=>{
-	res.render('profile',{data:req.query});
+router.get('/register-company',(req,res)=>{
+	sess = req.session;
+	res.render('register-company',{sess:sess});
 });
 
 // POST request
-app.post('/register',urlencoded,function(req,res){
-	if (!cekUser(req.body.username)[0]){
-		database.users.push({username:req.body.username,email:req.body.email,password:req.body.password});
-		res.redirect(`profile?username=${req.body.username}&email=${req.body.email}`);
-	} else {
-		res.render('register',{status:'no'})
-	};
-	console.log(req.body);
-	console.log(cekUser(req.body.username));
+router.post('/register-employer',urlencoded,function(req,res){
+	sess = req.session;
+	const {username,email,password} = req.body;
+	db('users').returning('*').insert({
+		username : username,
+		email : email,
+		joined : new Date()
+	}).then(user =>{
+		sess.user = user[0];
+		sess.email = user[0].email;
+		res.redirect(`profile`);
+	}).catch(error => {
+		res.status(400).render('register-employer',{sess:sess,status:'no'})
+	})
 });
 
-app.post('/login',urlencoded,function(req,res){
-	if (cekUser(req.body.username)[0]){
-		// res.render('profile',{data:database.users[cekUser(req.body.username)[1]]});
-		res.redirect(`profile?username=${database.users[cekUser(req.body.username)[1]].username}&email=${database.users[cekUser(req.body.username)[1]].email}`);
-	} else {
-		res.render('login',{status:'no'})
-	};
-	console.log(database.users[cekUser(req.body.username)[1]])
-	console.log(req.body);
+router.post('/login',urlencoded,function(req,res){
+	sess = req.session;
+	get_user(req.body.email,false).then( user =>{
+		sess.user = user[0];
+		sess.email = user[0].email;
+		res.redirect(`profile`);
+	}).catch(error => {
+		res.render('login',{sess:sess,status:'no'});
+	})
 });
 
 // Running Server
 const port = 8000;
+app.use('/',router);
 app.listen(port);
 console.log(`Website Successfully Deployed! Go to : http//localhost:${port}`);
