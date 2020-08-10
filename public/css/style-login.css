@@ -23,12 +23,10 @@ body{
 /* Navbar */
 nav{
     background-color: #264653ff;
+    margin-top: 0px;
 }
 nav .navbar-left{
     margin-top:0px;
-}
-.navbar-right li:nth-child(2){
-    display: none;
 }
 
 .navbar{

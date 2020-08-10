@@ -19,9 +19,6 @@
 		<% if (sess.email){ %>
 			<h1><%= sess.user.username %></h1>
 			<p><%= sess.user.email %></p>
-		<% }else if (typeof data != 'undefined') { %>
-			<h1><%= data.username %></h1>
-			<p><%= data.email %></p>
 		<% }else{ %>
 			<h1>Sorry, user not found</h1>
 		<% } %>
