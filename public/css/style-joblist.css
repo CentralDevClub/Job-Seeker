@@ -1,5 +1,5 @@
-/* Navbar */
-nav{
+ /* Navbar */
+nav.navbar{
     background-color: #264653ff !important;
     margin-top: 0px;
 }
@@ -105,6 +105,29 @@ nav .navbar-left{
 	font-size:14px;
 }
 
+/* Pagination */
+nav .pagination{
+	box-shadow: 0px 5px 10px 3px rgba(0,0,0,.1);
+}
+.pagination .page-item .page-link{
+	margin-left: 1.5px;
+	margin-right: 1.5px;
+	border:none;
+	font-size: 16px;
+	color:#264653ff;
+	opacity: .8;
+}
+.pagination .page-item .page-link.active{
+	background-color: #264653ff;
+	color:#fff;
+	opacity: 1;
+}
+
+
+/*DarkBlue : #264653ff;
+Green    : #2a9d8fff;
+
+
 /*div[class="row"] {
     outline: 1px dotted rgba(0, 0, 0, 0.25);
 }
@@ -112,4 +135,4 @@ nav .navbar-left{
 div[class^="col-"] {
     background-color: rgba(255, 0, 0, 0.2);
     outline: 1px dotted rgba(0, 0, 0, 0.5);
-}*/
+}
