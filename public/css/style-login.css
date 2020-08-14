@@ -22,7 +22,7 @@ body{
 
 /* Navbar */
 nav{
-    background-color: #264653ff;
+    background-color: #264653ff !important;
     margin-top: 0px;
 }
 nav .navbar-left{

@@ -1,6 +1,6 @@
 /* Navbar */
 nav{
-    background-color: #264653ff;
+    background-color: #264653ff !important;
     margin-top: 0px;
 }
 nav .navbar-left{
@@ -54,7 +54,6 @@ nav .navbar-left{
 	
 }
 .job-card{
-	/*height:215px;*/
 	background-color:#ffffff;
 	border-radius: 10px;
 	padding:25px 20px 20px 20px;
