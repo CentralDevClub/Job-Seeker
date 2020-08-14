@@ -1,19 +1,22 @@
- /* Navbar */
+/* === MOBILE === */
 nav.navbar{
-    background-color: #264653ff !important;
-    margin-top: 0px;
+  background-color: #264653ff !important;
+  margin-top: 0px;
 }
 nav .navbar-left{
-    margin-top:0px;
+  margin-top:0px;
 }
 
 .navbar{
-    padding: 20px;
+  padding: 20px;
 }
 
 /* Search Job */
 .search-job{
 	position:static;
+}
+.search-bar .col-md-2{
+	margin-left: auto;
 }
 .btn-sortby{
 	width: 45% !important;
@@ -50,12 +53,10 @@ nav .navbar-left{
 }
 
 /* Job Cards */
-.job-cards .row .col-md-3{
-	
-}
 .job-card{
 	background-color:#ffffff;
 	border-radius: 10px;
+	margin-top: 30px;
 	padding:25px 20px 20px 20px;
 	box-shadow: 0 5px 10px 4px rgba(41,156,143,.2);	
 }
@@ -65,7 +66,13 @@ nav .navbar-left{
 	color:#264653ff;
 }
 .job-card-title h5{
-	font-size: 18px;
+	font-size: 16px !important;
+}
+.job-card-title p{
+	font-size: 14px;
+}
+.job-card-time{
+	font-size: 12px !important;
 }
 .job-card-title h5::after{
 	display: block;
@@ -76,14 +83,10 @@ nav .navbar-left{
 	height:1.5px;
 	background-color: #264653ff;
 }
-.job-card-title p{
-	font-size: 14px
-}
 .job-card-time{
 	float:right;
 	display: inline-block;
 	font-family: roboto;
-	font-size: 14px;
 	color:#264653ff;
 }
 .job-card-desc{
@@ -106,6 +109,9 @@ nav .navbar-left{
 }
 
 /* Pagination */
+nav.nav-pagination{
+	background: none !important;
+}
 nav .pagination{
 	box-shadow: 0px 5px 10px 3px rgba(0,0,0,.1);
 }
@@ -117,11 +123,33 @@ nav .pagination{
 	color:#264653ff;
 	opacity: .8;
 }
+.pagination .page-item .page-link:hover{
+	background-color: #264653ff;
+	color:#fff;
+	opacity: .25;
+}
 .pagination .page-item .page-link.active{
 	background-color: #264653ff;
 	color:#fff;
 	opacity: 1;
 }
+
+
+
+/* === MEDIA QUERIES === */
+/* Desktop */
+@media only screen and (min-width: 768px){
+	/* Job Card */
+	.job-card-title h5{
+		font-size: 18px !important;
+	}
+	.job-card-time{
+		font-size: 14px !important;
+	}
+
+}
+
+
 
 
 /*DarkBlue : #264653ff;
