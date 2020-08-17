@@ -32,17 +32,17 @@
 			<div class="container">
 				<form method="POST" action="/login">
 					<% if (status == 'no'){ %>
-						<p class="alert alert-danger">Account not found, please register</p>
+						<p class="alert alert-danger">Login Error ! Account not found or incorrect password</p>
 					<% } %>
 					<div class="form-group">
 						<label for="email">Email</label>
-						<input type="text" class="form-control" id="email" placeholder="Enter your email" name='email'>
+						<input type="text" class="form-control" id="email" placeholder="Enter your email" name='email' required>
 					</div>
 
 					<div class="form-group">
 						<label for="password">Password</label>
 						<div class="mata">
-							<input type="password" class="form-control" id="password" placeholder="Enter your password" name='password'>
+							<input type="password" class="form-control" id="password" placeholder="Enter your password" name='password' required>
 							<div class="eye">
 								<i class="fa fa-eye" aria-hidden="true"></i>
 							</div>
