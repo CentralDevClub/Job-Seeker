@@ -5,6 +5,9 @@ const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
 const knex = require('knex');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 // Folder public untuk static import
 app.use(express.static(path.join(__dirname, '/public')));
@@ -12,7 +15,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 // View engine dengan ejs
 app.set('view engine','ejs');
 
-// Session Login
+// Session Login (Global session)
 app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 var sess;
 
@@ -22,15 +25,8 @@ urlencoded = bodyParser.urlencoded({ extended: false });
 app.use(urlencoded);
 
 // PostgreSQL Database Connection
-const db = knex({
-	client: 'pg',
-	connection: {
-		host : 'localhost',
-		user : 'philip',
-		password : 'master',
-		database : 'jobseeker'
-	}
-});
+const db_setting = require("./setting.json");
+const db = knex(db_setting);
 
 // Show all database
 function display_database(){
@@ -96,31 +92,60 @@ router.get('/register-company',(req,res)=>{
 });
 
 // POST request
+router.post('/profile',urlencoded,(req,res)=>{
+	sess = req.session.destroy();
+	res.redirect('/');
+});
+
 router.post('/register-employer',urlencoded,function(req,res){
 	sess = req.session;
 	const {username,email,password} = req.body;
+	// Insert ke table users
 	db('users').returning('*').insert({
 		username : username,
 		email : email,
 		joined : new Date()
-	}).then(user =>{
+	}).then(user=>{
 		sess.user = user[0];
 		sess.email = user[0].email;
-		res.redirect(`profile`);
 	}).catch(error => {
+		// Catch error untuk register gagal
 		res.status(400).render('register-employer',{sess:sess,status:'no'})
+	}).then(user=>{
+		// Encrypt password
+		bcrypt.genSalt(saltRounds, (err, salt) => {
+			bcrypt.hash(password, salt, (err, hash) => {
+				// Insert ke table login
+				db('login').returning('*').insert({
+					hash:hash,
+					email:email
+				}).then(user =>{
+					// redirect ke page profile
+					res.redirect(`profile`);
+				});
+			});
+		});
 	})
 });
 
 router.post('/login',urlencoded,function(req,res){
 	sess = req.session;
-	get_user(req.body.email,false).then( user =>{
-		sess.user = user[0];
-		sess.email = user[0].email;
-		res.redirect(`profile`);
+	// Login password validation
+	db.select('*').from('login').where({email : req.body.email}).then(function (hash){
+		bcrypt.compare(req.body.password,hash[0].hash,(err,data)=>{
+			if (data){
+				db.select('*').from('users').where({email:req.body.email}).then(user=>{
+					sess.user = user[0];
+					sess.email = user[0].email;
+					res.redirect(`profile`);
+				});
+			} else{
+				res.render('login',{sess:sess,status:'no'});
+			};
+		});
 	}).catch(error => {
 		res.render('login',{sess:sess,status:'no'});
-	})
+	});
 });
 
 // Running Server
