@@ -28,6 +28,7 @@ nav{
 	position: relative;
 	z-index: 1;
 	margin-top: 5px;
+	background-color: rgba(0,0,0,0);
 }
 .navbar-brand{
 	margin-right:50px;
@@ -211,7 +212,10 @@ ul.list-footer-bottom li{
 	display: inline;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 992px){
+	nav{
+		background-color: #264653ff;
+	}
     .jumbotron-title{
         top:30%;
     }
