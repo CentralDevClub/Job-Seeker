@@ -19,6 +19,9 @@
 		<% if (sess.email){ %>
 			<h1><%= sess.user.username %></h1>
 			<p><%= sess.user.email %></p>
+			<form method="POST" action="/profile">
+				<button class="btn btn-danger" type="submit">Log out</button>
+			</form>
 		<% }else{ %>
 			<h1>Sorry, user not found</h1>
 		<% } %>
