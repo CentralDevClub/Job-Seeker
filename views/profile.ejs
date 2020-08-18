@@ -16,9 +16,21 @@
 
 	<body>
 		<%- include('templates/navbar'); -%>
-		<% if (sess.email){ %>
+		<% if (sess.company) {%>
+			<h1><%= sess.user.name %></h1>
+			<p><%= sess.user.email %></p>
+			<p><%= sess.user.website %></p>
+			<p><%= sess.user.address %></p>
+			<p><%= sess.user.description %></p>
+			<p><%= sess.user.goal %></p>
+			<p><%= sess.user.joined %></p>
+			<form method="POST" action="/profile">
+				<button class="btn btn-danger" type="submit">Log out</button>
+			</form>
+		<% } else if (sess.email){ %>
 			<h1><%= sess.user.username %></h1>
 			<p><%= sess.user.email %></p>
+			<p><%= sess.user.joined %></p>
 			<form method="POST" action="/profile">
 				<button class="btn btn-danger" type="submit">Log out</button>
 			</form>

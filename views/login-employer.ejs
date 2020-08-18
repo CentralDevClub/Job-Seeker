@@ -15,33 +15,61 @@
 	<title>Login</title>
 </head>
 
-
 <body>
 	<!-- Navbar -->
 	<%- include('templates/navbar'); -%>
-	<div class="jumbotron-home">
-		<h1 class="jumbotron-title">Login to Your Account!</h1>
-		<h1 class="jumbotron-subtitle">as Employer or Company</h1>
-	</div>
 
-	<!-- End Navbar -->
-
-	<!-- Main -->
-	<div class="container">
-		<div class="option">
-			<h2>Select your account type</h2>
-			<a href="/login/employer" type="button" class="btn btn-info btn-block">Are you an Employer? Let's find
-				your job!</a>
-			<a href="/login/company" type="button" class="btn btn-info btn-block">Are you a Company? Let's find your
-				employer!</a>
+	<!-- main -->
+	<main>
+		<!-- logo icon -->
+		<div class="logo-icons">
+			<h1>Login</h1>
+			<h2>to find your future job</h2>
 		</div>
-	</div>
 
-	<!-- End Main -->
+		<!-- form -->
+		<div class="">
+			<div class="container">
+				<form method="POST" action="/login/employer">
+					<% if (status == 'no'){ %>
+						<p class="alert alert-danger">Login Error ! Account not found or incorrect password</p>
+					<% } %>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="text" class="form-control" id="email" placeholder="Enter your email" name='email' required>
+					</div>
 
-	<!-- Footer -->
+					<div class="form-group">
+						<label for="password">Password</label>
+						<div class="mata">
+							<input type="password" class="form-control" id="password" placeholder="Enter your password" name='password' required>
+							<div class="eye">
+								<i class="fa fa-eye" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="custom-control custom-checkbox mb-3">
+						<input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+						<label class="custom-control-label" for="customCheck">Remember me</label>
+
+
+					</div>
+
+					<button type="submit" class="btn btn-info btn-block">Login</button>
+					<div class="forgot-pass">
+						<p>forgot password ?</p>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</main>
+
 	<!-- Footer -->
 	<footer>
+
 		<div class="container footer-top">
 			<nav class="navbar navbar-expand-lg navbar-dark">
 				<a class="navbar-brand" href="#"><img src="img/logo.png"></a>
@@ -71,13 +99,13 @@
 					</ul>
 					<ul class="navbar-nav navbar-right">
 						<li class="nav-item active" style="margin: 0px !important;">
-							<a class="nav-link" href="#">Login</a>
+							<a class="nav-link" href="/login">Login</a>
 						</li>
 						<li class="nav-item active" style="margin: 0px !important;">
 							<a class="nav-link" href="#">|</a>
 						</li>
 						<li class="nav-item active" style="margin: 0px !important;">
-							<a class="nav-link" href="#">Register</a>
+							<a class="nav-link" href="/register">Register</a>
 						</li>
 					</ul>
 				</div>
@@ -85,6 +113,7 @@
 		</div>
 
 		<hr class="container">
+
 		<div class="container footer-bottom">
 			<p><i class="fas fa-copyright"></i>&nbsp;2020 Job Seeker Inc. Job Vacancy Corporation.</p>
 			<ul class="list-footer-bottom">
@@ -92,10 +121,12 @@
 				<li>Privacy Policy</li>
 			</ul>
 		</div>
+
 	</footer>
-	<!-- END OF Footer -->
+
+	<!-- JQuery and JSs -->
 	<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
-	<script type="text/javascript" src="/js/script-login.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 </body>
 </html>
