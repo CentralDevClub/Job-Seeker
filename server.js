@@ -61,6 +61,11 @@ router.get('/categories',function(req,res){
 	res.render('categories',{sess:sess});
 });
 
+router.get('/profile',(req,res)=>{
+	sess = req.session;
+	res.render('profile',{sess:sess});
+});
+
 router.get('/register',(req,res)=>{
 	sess = req.session;
 	res.render('register',{sess:sess,status:'ok'});
@@ -71,9 +76,14 @@ router.get('/login',(req,res)=>{
 	res.render('login',{sess:sess,status:'ok'});
 });
 
-router.get('/profile',(req,res)=>{
+router.get('/login/employer',(req,res)=>{
 	sess = req.session;
-	res.render('profile',{sess:sess});
+	res.render('login-employer',{sess:sess,status:'ok'});
+});
+
+router.get('/login/company',(req,res)=>{
+	sess = req.session;
+	res.render('login-company',{sess:sess,status:'ok'});
 });
 
 router.get('/joblist',(req,res)=>{
@@ -81,12 +91,12 @@ router.get('/joblist',(req,res)=>{
 	res.render('joblist',{sess:sess});
 });
 
-router.get('/register-employer',(req,res)=>{
+router.get('/register/employer',(req,res)=>{
 	sess = req.session;
 	res.render('register-employer',{sess:sess,status:'ok'});
 });
 
-router.get('/register-company',(req,res)=>{
+router.get('/register/company',(req,res)=>{
 	sess = req.session;
 	res.render('register-company',{sess:sess});
 });
@@ -97,7 +107,8 @@ router.post('/profile',urlencoded,(req,res)=>{
 	res.redirect('/');
 });
 
-router.post('/register-employer',urlencoded,function(req,res){
+// Register Employer
+router.post('/register/employer',urlencoded,function(req,res){
 	sess = req.session;
 	const {username,email,password} = req.body;
 	// Insert ke table users
@@ -121,14 +132,47 @@ router.post('/register-employer',urlencoded,function(req,res){
 					email:email
 				}).then(user =>{
 					// redirect ke page profile
-					res.redirect(`profile`);
+					res.redirect(`/profile`);
 				});
 			});
 		});
 	})
 });
 
-router.post('/login',urlencoded,function(req,res){
+// Register Companies
+router.post('/register/company',urlencoded,(req,res)=>{
+	sess = req.session;
+	const company = req.body;
+	db('companies').returning('*').insert({
+		name:company.name,
+		email:company.email,
+		description:company.description,
+		goal:company.goal,
+		address:company.address,
+		website:company.website,
+		joined: new Date()
+	}).then(companylist=>{
+		sess.company = true,
+		sess.user = companylist[0],
+		sess.email = companylist[0].email
+	}).catch(error=>{
+		res.status(400).render('register-company',{sess:sess,status:'no'})
+	}).then(comp=>{
+		bcrypt.genSalt(saltRounds,(err,salt)=>{
+			bcrypt.hash(company.password,salt,(err,hash)=>{
+				db('logincom').returning('*').insert({
+					hash:hash,
+					email:company.email
+				}).then(comp=>{
+					res.redirect('/profile')
+				});
+			});
+		});
+	});
+});
+
+// User Login. Employer
+router.post('/login/employer',urlencoded,function(req,res){
 	sess = req.session;
 	// Login password validation
 	db.select('*').from('login').where({email : req.body.email}).then(function (hash){
@@ -137,14 +181,37 @@ router.post('/login',urlencoded,function(req,res){
 				db.select('*').from('users').where({email:req.body.email}).then(user=>{
 					sess.user = user[0];
 					sess.email = user[0].email;
-					res.redirect(`profile`);
+					res.redirect('/profile');
 				});
 			} else{
-				res.render('login',{sess:sess,status:'no'});
+				res.render('login-employer',{sess:sess,status:'no'});
 			};
 		});
 	}).catch(error => {
-		res.render('login',{sess:sess,status:'no'});
+		res.render('login-employer',{sess:sess,status:'no'});
+	});
+});
+
+// User Login Company
+router.post('/login/company',urlencoded,(req,res)=>{
+	sess = req.session;
+	// Password validaion
+	const company = req.body;
+	db.select('*').from('logincom').where({email:company.email}).then(hash=>{
+		bcrypt.compare(company.password,hash[0].hash,(err,data)=>{
+			if(data){
+				sess.company = true;
+				db.select('*').from('companies').where({email:company.email}).then(comp=>{
+					sess.user = comp[0],
+					sess.email = comp[0].email,
+					res.redirect('/profile');
+				});
+			} else{
+				res.render('login-company',{sess:sess,status:'no'})
+			};
+		});
+	}).catch(error=>{
+		res.render('login-company',{sess:sess,status:'no'})
 	});
 });
 
