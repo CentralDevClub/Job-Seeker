@@ -50,6 +50,9 @@ nav{
 .btn-post-job a{
 	padding:5px 15px !important;
 }
+.navbar-right li:nth-child(2){
+	display: none !important;
+}
 .navbar-right{
 	margin-left: auto;
 }
@@ -179,6 +182,9 @@ footer{
 	height:210px;
 	margin-top:80px;
 	background-color: #264653ff;
+}
+footer .navbar-toggler{
+	display: none !important;
 }
 footer .navbar{
 	padding-left: 0px !important;
