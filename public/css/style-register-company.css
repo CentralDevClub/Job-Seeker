@@ -33,6 +33,13 @@ nav{
 .navbar-brand{
 	margin-right:50px;
 }
+.btn-post-job{
+	background-color: #2a9d8ffc;
+	border-radius: 30px;
+}
+.btn-post-job a{
+	padding:5px 15px !important;
+}
 .navbar-nav .nav-item a{
 	font-family: roboto;
 	font-weight: 700;
@@ -42,13 +49,6 @@ nav{
 }
 .navbar-nav .nav-item{
 	margin-right: 40px;
-}
-.btn-post-job{
-	background-color: #2a9d8ffc;
-	border-radius: 30px;
-}
-.btn-post-job a{
-	padding:5px 15px !important;
 }
 .navbar-right li:nth-child(2){
 	display: none !important;
@@ -227,6 +227,13 @@ ul.list-footer-bottom li{
 	nav{
 		background-color: #264653ff;
 	}
+    .btn-post-job{
+		background-color: rgba(0,0,0,0);
+		border-radius: 30px;
+	}
+	.btn-post-job a{
+		padding:7px 0px !important;
+	}
     .jumbotron-title{
         top:30%;
     }
@@ -239,6 +246,13 @@ ul.list-footer-bottom li{
 }
 
 @media screen and (max-width: 512px){
+    .btn-post-job{
+		background-color: rgba(0,0,0,0);
+		border-radius: 30px;
+	}
+	.btn-post-job a{
+		padding:7px 0px !important;
+	}
     .jumbotron-title{
         font-size: 60px;
     }
