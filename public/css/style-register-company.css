@@ -209,12 +209,8 @@ footer hr{
 	font-size: 16px;
 	color: #fff;
 }
-.footer-bottom p{
-	float: left;
-}
 ul.list-footer-bottom{
-	display: inline;
-	
+	float:right;
 }
 ul.list-footer-bottom li:nth-child(1){
 	margin-right: 40px;
@@ -243,6 +239,17 @@ ul.list-footer-bottom li{
     .button{
         width: 60%;
     }
+	.footer-bottom p{
+		float: left;
+	}
+	ul.list-footer-bottom{
+		padding-left: 0px;
+		display: inline;
+		float:left;
+	}
+	ul.list-footer-bottom li:nth-child(1){
+		margin-right: 40px;
+	}
 }
 
 @media screen and (max-width: 512px){
@@ -262,4 +269,16 @@ ul.list-footer-bottom li{
     .button{
         width: 80%;
     }
+	.footer-bottom p{
+		float: left;
+	}
+	ul.list-footer-bottom{
+		padding-left: 0px;
+		display: inline;
+		float:left;
+	}
+	ul.list-footer-bottom li:nth-child(1){
+		margin-right: 40px;
+	}
+
 }
