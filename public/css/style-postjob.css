@@ -1,0 +1,122 @@
+/* === SETUP === */
+/* Fonts */
+@font-face{
+	font-family: montserrat;
+	src: url('../font/Montserrat-Light.ttf');
+}
+@font-face{
+	font-family: montserrat;
+	src: url('../font/Montserrat-Bold.ttf');
+	font-weight: bold;
+}
+@font-face{
+	font-family: roboto;
+	src: url('../font/Roboto-Medium.ttf');
+}
+@font-face{
+	font-family: roboto;
+	src: url('../font/Roboto-Bold.ttf');
+}
+
+/* MOBILE */
+/* Form */
+.form-group{
+	margin-top: 30px;
+}
+.postjob-form p{
+	font-family: roboto;
+	font-weight: bold;
+	font-size: 18px;
+	color: #264653ff;
+}
+.postjob-form .form-group label, .postjob-form .form-group input::placeholder{
+	font-family: roboto;
+}
+.postjob-form .form-group label{
+	color:#264653ff;
+	font-size: 16px;
+}
+.postjob-form .form-group input, .postjob-form .form-group select, .postjob-form .form-group textarea{
+	color:#264653ff;
+	opacity: .8;
+	font-size: 14px;
+	font-weight: normal;
+}
+.postjob-form .form-group input::placeholder, .postjob-form .form-group textarea::placeholder{
+	font-size: 14px;
+	opacity: .5;
+}
+.postjob-form .form-group input, .postjob-form .form-group select, .postjob-form .form-group textarea{
+	border-width: 0;
+	box-shadow: 0px 3px 7px 1px rgba(0,0,0,.1);
+}
+.postjob-form .form-group input:focus, .postjob-form .form-group textarea:focus{
+	box-shadow: 0px 3px 5px 2px rgba(38,70,83,.2);
+	transition-duration: .25s;
+}
+a.form-p{
+	color:#264653ff;
+	opacity: .8;
+	font-size: 14px !important;
+	font-weight: normal;
+}
+a.form-p:hover{
+	text-decoration: none;
+	opacity: 1;
+	transition-duration: .25s;
+}
+.form-buttons button{
+	width: 100%;
+	border-width: 0;
+	font-family: roboto;
+	font-weight: bold;
+	font-size: 18px;
+	border-radius:5px;
+}
+.form-buttons button.btn-draft{
+	background-color: #fff;
+	padding-top:10px;
+	padding-bottom:10px;
+	color:#2a9d8fff;
+	box-shadow: 0px 5px 10px 2px rgba(0,0,0,.1);
+}
+.form-buttons button.btn-draft:hover{
+	background-color: #264653ff;
+	color:#fff;
+	transition-duration: 1s;
+}
+.form-buttons button.btn-post{
+	background-color: #2a9d8fff;
+	padding-top:10px;
+	padding-bottom:10px;
+	color:#fff;
+	box-shadow: 0px 5px 10px 2px rgba(41,156,143,.2);
+}
+.form-buttons button.btn-post:hover{
+	background-color: #264653ff;
+	box-shadow: 0px 5px 10px 2px rgba(38,70,83,.5);
+	transition-duration: .4s;
+}
+
+/* How Post */
+.how-post p{
+	font-family: roboto;
+	font-weight: bold;
+	font-size: 18px;
+	color: #264653ff;
+}
+.how-post video{
+	object-fit: fill;
+	border-radius: 5px;
+	box-shadow: 0px 5px 10px 5px rgba(38,70,83,.25);
+}
+
+
+
+/* Desktop */
+@media only screen and (min-width:992px){
+	
+}
+
+/*DarkBlue : #264653ff;
+Green    : #2a9d8fff;
