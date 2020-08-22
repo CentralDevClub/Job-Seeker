@@ -28,9 +28,17 @@ nav{
 	position: relative;
 	z-index: 1;
 	margin-top: 5px;
+	background-color: rgba(0,0,0,0);
 }
 .navbar-brand{
 	margin-right:50px;
+}
+.btn-post-job{
+	background-color: #2a9d8ffc;
+	border-radius: 30px;
+}
+.btn-post-job a{
+	padding:5px 15px !important;
 }
 .navbar-nav .nav-item a{
 	font-family: roboto;
@@ -42,12 +50,8 @@ nav{
 .navbar-nav .nav-item{
 	margin-right: 40px;
 }
-.btn-post-job{
-	background-color: #2a9d8ffc;
-	border-radius: 30px;
-}
-.btn-post-job a{
-	padding:5px 15px !important;
+.navbar-right li:nth-child(2){
+	display: none !important;
 }
 .navbar-right{
 	margin-left: auto;
@@ -179,6 +183,9 @@ footer{
 	margin-top:80px;
 	background-color: #264653ff;
 }
+footer .navbar-toggler{
+	display: none !important;
+}
 footer .navbar{
 	padding-left: 0px !important;
 	/*padding-right: -50px !important;*/
@@ -202,12 +209,8 @@ footer hr{
 	font-size: 16px;
 	color: #fff;
 }
-.footer-bottom p{
-	float: left;
-}
 ul.list-footer-bottom{
-	display: inline;
-	
+	float:right;
 }
 ul.list-footer-bottom li:nth-child(1){
 	margin-right: 40px;
@@ -216,7 +219,17 @@ ul.list-footer-bottom li{
 	display: inline;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 992px){
+	nav{
+		background-color: #264653ff;
+	}
+    .btn-post-job{
+		background-color: rgba(0,0,0,0);
+		border-radius: 30px;
+	}
+	.btn-post-job a{
+		padding:7px 0px !important;
+	}
     .jumbotron-title{
         top:30%;
     }
@@ -226,9 +239,27 @@ ul.list-footer-bottom li{
     .button{
         width: 60%;
     }
+	.footer-bottom p{
+		float: left;
+	}
+	ul.list-footer-bottom{
+		padding-left: 0px;
+		display: inline;
+		float:left;
+	}
+	ul.list-footer-bottom li:nth-child(1){
+		margin-right: 40px;
+	}
 }
 
 @media screen and (max-width: 512px){
+    .btn-post-job{
+		background-color: rgba(0,0,0,0);
+		border-radius: 30px;
+	}
+	.btn-post-job a{
+		padding:7px 0px !important;
+	}
     .jumbotron-title{
         font-size: 60px;
     }
@@ -238,4 +269,16 @@ ul.list-footer-bottom li{
     .button{
         width: 80%;
     }
+	.footer-bottom p{
+		float: left;
+	}
+	ul.list-footer-bottom{
+		padding-left: 0px;
+		display: inline;
+		float:left;
+	}
+	ul.list-footer-bottom li:nth-child(1){
+		margin-right: 40px;
+	}
+
 }

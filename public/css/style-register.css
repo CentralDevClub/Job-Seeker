@@ -32,6 +32,13 @@ nav{
 .navbar-brand{
 	margin-right:50px;
 }
+.btn-post-job{
+	background-color: #2a9d8ffc;
+	border-radius: 30px;
+}
+.btn-post-job a{
+	padding:5px 15px !important;
+}
 .navbar-nav .nav-item a{
 	font-family: roboto;
 	font-weight: 700;
@@ -41,13 +48,6 @@ nav{
 }
 .navbar-nav .nav-item{
 	margin-right: 40px;
-}
-.btn-post-job{
-	background-color: #2a9d8ffc;
-	border-radius: 30px;
-}
-.btn-post-job a{
-	padding:5px 15px !important;
 }
 .navbar-right{
 	margin-left: auto;
@@ -117,8 +117,6 @@ nav{
     margin-bottom: 30px;
     font-size: 24px;
 }
-
-<<<<<<< HEAD
 .option button{
     padding: 10px;
     border-radius: 10px;
@@ -126,12 +124,11 @@ nav{
     font-weight: bold;
     font-size: 18px;
     box-shadow: 0px 5px 15px rgb(141, 176, 216);
-=======
+}
 .option a{
     padding: 10px;
     font-weight: bold;
     font-size: 16px;
->>>>>>> Register All Pages - moved to NodeJS environment
 }
 
 
@@ -179,7 +176,14 @@ ul.list-footer-bottom li{
 	display: inline;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 992px){
+	.btn-post-job{
+		background-color: rgba(0,0,0,0);
+		border-radius: 30px;
+	}
+	.btn-post-job a{
+		padding:7px 0px !important;
+	}
     .jumbotron-title{
         top:30%;
     }
@@ -189,6 +193,13 @@ ul.list-footer-bottom li{
 }
 
 @media screen and (max-width: 512px){
+    .btn-post-job{
+		background-color: rgba(0,0,0,0);
+		border-radius: 30px;
+	}
+	.btn-post-job a{
+		padding:7px 0px !important;
+	}
     .jumbotron-title{
         font-size: 60px;
     }

@@ -475,12 +475,12 @@ ul.list-footer-bottom li{
 
 /* === MEDIA QUERIES === */
 /* Desktop */
-@media only screen and (min-width:768px){
+@media only screen and (min-width:992px){
 	/* Navbar */
 	nav{
 		position: relative;
 		margin-top: 5px;
-		background-color: rgba(0,0,0,0) !important;
+		background-color: rgba(0,0,0,0);
 	}
 	.navbar-brand{
 		margin-right:50px;
@@ -701,6 +701,5 @@ ul.list-footer-bottom li{
 	}
 }
 
-
-/*DarkBlue : #264653ff;;
+/*DarkBlue : #264653ff;
 Green    : #2a9d8fff;
