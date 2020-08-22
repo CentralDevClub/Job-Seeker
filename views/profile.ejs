@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/all.css">
+		<link rel="stylesheet" href="/css/style-profile.css">
 		<!-- <script src="https://kit.fontawesome.com/a6b535fb5d.js" crossorigin="anonymous"></script> -->
 		<title>Welcome Job Seeker</title>
 	</head>
@@ -20,7 +21,21 @@
 			<h1><%= sess.user.username %></h1>
 			<p><%= sess.user.email %></p>
 		<% }else{ %>
-			<h1>Sorry, user not found</h1>
+			<div class="logo-icons">
+				<h1>Login</h1>
+				<h2>to find your future job</h2>
+			</div>
+
+			
+			<div class="container d-flex flex-row">
+				<div class="container bg-dark">
+					<div class="container bg-primary d-flex flex-column align-items-center">
+						<img id="fotoprofil"src="https://i.kym-cdn.com/photos/images/facebook/001/250/216/305.jpg" alt="..." class="rounded-circle">
+						<img id="fotoprofil"src="https://i.kym-cdn.com/photos/images/facebook/001/250/216/305.jpg" alt="..." class="rounded-circle">
+					</div>
+				</div>
+				<div class="container bg-light">dunia</div>
+			</div>
 		<% } %>
 
 		<!-- JQuery and JSs -->
