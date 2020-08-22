@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- CSSs -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/style-postjob.css">
+	<link rel="stylesheet" href="/css/all.css">
+
+	<title>Categories</title>
+
+</head>
+
+<body>
+
+	<%- include('templates/navbar'); -%>
+
+	<!-- Jumbotron -->
+	<div class="jumbotron-categories">
+		<h1 class="jumbotron-title">Post Your Job</h1>
+		<p class="jumbotron-subtitle">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium doloremque in
+			neque recusandae, iste magni non.</p>
+	</div>
+	<!-- END OF Jumbotron -->
+
+	<!-- Main -->
+	<div class="container main-postjob">
+		<div class="row">
+			
+			<!-- Form Section -->
+			<div class="col-md-7 postjob-form">
+				<p>Please fill the requirements</p>
+				<form action="" method="">
+					
+					<div class="form-group">
+						<label for="form-job-title">1. Job Title</label>
+						<input type="text" class="form-control" id="form-job-title" placeholder="Enter your job title">
+					</div>
+					
+					<div class="form-group">
+				    <label for="form-job-category">2. Job Category</label>
+				    <div class="row" id="form-job-category">
+					    <div class="col-md-4 col-sm-4">
+						    <select class="form-control">
+						      <option class="postjob-select">-- Select Category --</option>
+						      <option>Graphic Design</option>
+						      <option>Programming</option>
+						      <option>Music</option>
+						      <option>Video</option>
+						      <option>Writing</option>
+						    </select>
+						  </div>
+						  <div class="col-md-4 col-sm-4">
+						    <select class="form-control">
+						      <option class="postjob-select">-- Select Skill --</option>
+						      <option>Illustration</option>
+						      <option>Logo</option>
+						      <option>Vector</option>
+						      <option>UI/UX Design</option>
+						      <option>Game Design</option>
+						    </select>
+						  </div>	
+						  <div class="col-md-4 col-sm-4">
+						    <select class="form-control">
+						    	<option class="postjob-select">-- Select Expertise --</option>
+						      <option>Flat Design</option>
+						      <option>Realistic</option>
+						      <option>Air Brush</option>
+						      <option>Pint Over</option>
+						      <option>Sketch</option>
+						    </select>
+						  </div>	
+					  </div>	
+				  </div>
+
+				  <div class="form-group">
+						<label for="form-job-desc">3. Job Description</label>
+						<textarea class="form-control" name="" id="form-job-desc" cols="30" rows="10" placeholder="Enter job description"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label for="form-job-qualifications">4. Job Qualifications</label>
+						<input type="text" class="form-control mb-1" id="form-job-qualifications" placeholder="Enter qualification">
+						<a href="#" class="form-p">Add more qualification</a>
+					</div>
+
+					<div class="form-group">
+						<label for="form-job-comdesc">5. Company Description</label>
+						<textarea class="form-control mb-1" name="" id="form-job-comdesc" cols="30" rows="5" placeholder="Enter company description">Autofilled from data entered when register account. dolor sit, amet consectetur adipisicing elit. Laudantium doloremque in neque recusandae, iste magni non nostrum saepe quis. Animi ipsum sequi quas placeat velit dolor iste, similique voluptates quaerat tempora, suscipit consequuntur provident vero dolore debitis veniam est.</textarea>
+						<a href="#" class="form-p">Edit Company Description here</a>
+					</div>
+
+					<div class="form-group">
+						<label for="form-job-comgoals">6. Company Goals</label>
+						<textarea class="form-control mb-1" name="" id="form-job-comgoals" cols="30" rows="5" placeholder="Enter company description">Autofilled from data entered when register account. dolor sit, amet consectetur adipisicing elit. Laudantium doloremque in neque recusandae, iste magni non nostrum saepe quis. Animi ipsum sequi quas placeat velit dolor iste, similique voluptates quaerat tempora, suscipit consequuntur provident vero dolore debitis veniam est.</textarea>
+						<a href="#" class="form-p">Edit Company Goals here</a>
+					</div>
+
+					<div class="form-group">
+				    <label for="form-job-salary">7. Salary</label>
+				    <div class="row" id="form-job-salary">
+					    <div class="col-md-4 col-sm-6">
+						    <select class="form-control">
+						      <option class="postjob-select">-- Select Payment --</option>
+						      <option>Hourly</option>
+						      <option>Dayly</option>
+						      <option>Monthly</option>
+						      <option>Yearly</option>
+						    </select>
+						  </div>
+						  <div class="col-md-4 col-sm-6">
+						    <input class="form-control" type="number" placeholder="$700">
+						  </div>
+					  </div>	
+				  </div>
+
+				  <div class="row form-buttons mt-5">
+					  <div class="col-md-6">
+					  	<button type="submit" class="btn-draft">Save Draft</button>
+					  </div>
+
+						<div class="col-md-6">
+					  	<button type="submit" class="btn-post">Post Job</button>
+					  </div>
+				  </div>
+
+				</form>
+			</div>
+			<!-- END OF Form Section -->
+
+			<div class="col-md-1"></div>
+			
+			<!-- How Post Section -->
+			<div class="col-md-4 how-post">
+				<p>How to post your job vacancy?</p>
+				<video class="mb-1" width="100%" height="" controls>
+					<source src="/videos/sample-video.mp4" type="video/mp4">
+					The video is not supported by the browser
+				</video>
+				<a href="#" class="form-p">Want to ask more questions?</a>
+			</div>
+			<!-- END OF How Post Section -->
+
+		</div>
+	</div>
+	<!-- END OF Main -->
+
+
+
+
+
+
+
+
+	<!-- Footer -->
+	<%- include('templates/footer'); -%>
+	<!-- END OF Footer -->
+
+
+	<!-- JQuery and JSs -->
+	<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+</body>
+
+</html>

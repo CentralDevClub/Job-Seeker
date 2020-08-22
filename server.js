@@ -85,6 +85,11 @@ router.get('/joblist',(req,res)=>{
 	res.render('joblist',{sess:sess});
 });
 
+router.get('/postjob',(req,res)=>{
+	sess = req.session;
+	res.render('postjob',{sess:sess});
+});
+
 router.get('/register-employer',(req,res)=>{
 	sess = req.session;
 	res.render('register-employer',{sess:sess,status:'ok'});
