@@ -75,9 +75,14 @@ router.get('/login',(req,res)=>{
 	res.render('login',{sess:sess,status:'ok'});
 });
 
-router.get('/profile',(req,res)=>{
+router.get('/profile/company',(req,res)=>{
 	sess = req.session;
-	res.render('profile',{sess:sess});
+	res.render('profile-company',{sess:sess});
+});
+
+router.get('/profile/employer',(req,res)=>{
+	sess = req.session;
+	res.render('profile-employer',{sess:sess});
 });
 
 router.get('/joblist',(req,res)=>{
