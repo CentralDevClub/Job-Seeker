@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<!-- CSSs -->
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/all.css">
+		<!-- <script src="https://kit.fontawesome.com/a6b535fb5d.js" crossorigin="anonymous"></script> -->
+		<title>Welcome Job Seeker</title>
+	</head>
+
+	<body>
+		<%- include('templates/navbar'); -%>
+		<% if (sess.company) {%>
+			<h1><%= sess.user.name %></h1>
+			<p><%= sess.user.email %></p>
+			<p><%= sess.user.website %></p>
+			<p><%= sess.user.address %></p>
+			<p><%= sess.user.description %></p>
+			<p><%= sess.user.goal %></p>
+			<p><%= sess.user.joined %></p>
+			<form method="POST" action="/profile">
+				<button class="btn btn-danger" type="submit">Log out</button>
+			</form>
+		<% } else if (sess.email){ %>
+			<h1><%= sess.user.username %></h1>
+			<p><%= sess.user.email %></p>
+			<p><%= sess.user.joined %></p>
+			<form method="POST" action="/profile">
+				<button class="btn btn-danger" type="submit">Log out</button>
+			</form>
+		<% }else{ %>
+			<h1>Sorry, user not found</h1>
+		<% } %>
+
+		<!-- JQuery and JSs -->
+		<script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	</body>
+</html>
