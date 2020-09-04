@@ -25,10 +25,8 @@ urlencoded = bodyParser.urlencoded({ extended: false });
 app.use(urlencoded);
 
 // PostgreSQL Database Connection
-
 const db_setting = require("./setting.json");
 const db = knex(db_setting);
-
 
 // Show all database
 function display_database(){
