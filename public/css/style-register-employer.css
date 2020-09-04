@@ -132,6 +132,10 @@ nav{
 }
 
 /* MAin */
+#btn-option{
+	font-weight: bold;
+}
+
 #main-container{
     display: flex;
     flex-direction: column;
@@ -164,8 +168,17 @@ form{
     width: 80%;
 }
 
+.form-control {
+	border: none;
+}
+
 form label{
     font-weight: 500;
+}
+
+#btn-submit{
+	font-size: large;
+	font-weight: bold;
 }
 
 /* End Main */

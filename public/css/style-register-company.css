@@ -132,6 +132,11 @@ nav{
 }
 
 /* MAin */
+#btn-option{
+	font-weight: bold;
+	font-size: large;
+}
+
 #main-container{
     display: flex;
     flex-direction: column;
@@ -164,6 +169,10 @@ form{
     width: 80%;
 }
 
+.form-control {
+	border: none;
+}
+
 form label{
     font-weight: 500;
 }
@@ -171,6 +180,11 @@ form label{
 form span{
     color: rgb(25, 54, 117);
     font-size: 15px;
+}
+
+#btn-submit{
+	font-size: large;
+	font-weight: bold;
 }
 
 /* End Main */

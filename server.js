@@ -108,7 +108,7 @@ router.get('/postjob',(req,res)=>{
 	res.render('postjob',{sess:sess});
 });
 
-router.get('/register-employer',(req,res)=>{
+router.get('/register/employer',(req,res)=>{
 	sess = req.session;
 	res.render('register-employer',{sess:sess,status:'ok'});
 });

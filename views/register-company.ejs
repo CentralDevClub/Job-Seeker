@@ -27,9 +27,9 @@
   <div class="container" id="main-container">
     <!-- button change -->
     <div class="button">
-      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+      <div id="btn-option" class="btn-group btn-group-lg shadow p-0 bg-white rounded" role="group" aria-label="Basic example">
         <a href="/register/employer" type="button" class="btn btn-light">I'm an Employer</a>
-        <a href="/register/company" type="button" id="btn-emp" class="btn btn-info">I'm a Company</a>
+        <a href="/register/company" type="button" id="btn-emp" class="btn btn-info ]">I'm a Company</a>
       </div>
     </div>
     <!-- end button change -->
@@ -43,16 +43,16 @@
 
       <div class="form-group ">
         <label for="name">Company Name</label>
-        <input type="text" class="form-control" name="name" id="inputFirstName" placeholder="Enter the company name" required>
+        <input type="text" class="form-control shadow-sm p-3 mb-2 bg-white rounded" name="name" id="inputFirstName" placeholder="Enter the company name" required>
       </div>
 
       <div class="form-group">
         <label for="inputProfilVid">Company Profile Video</label><br>
         <div class="input-group">
-          <div class="custom-file">
+          <div class="custom-file shadow-sm p-3 mb-2 bg-white rounded ">
             <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
               placeholder="Upload your company profile video">
-            <label class="custom-file-label" for="inputGroupFile01">Upload your company profile video</label>
+            <label class="custom-file-label border-0" for="inputGroupFile01">Upload your company profile video</label>
           </div>
         </div>
         <span> You can change the video later on</span>
@@ -60,41 +60,41 @@
 
       <div class="form-group">
         <label for="description">Company Description</label>
-        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"
+        <textarea name="description" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="exampleFormControlTextarea1" rows="3"
           placeholder="Enter the company description" required></textarea>
         <span> You can edit it later on</span>
       </div>
 
       <div class="form-group">
         <label for="goal">Company Goals</label>
-        <textarea name="goal" class="form-control" id="exampleFormControlTextarea1" rows="3"
+        <textarea name="goal" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="exampleFormControlTextarea1" rows="3"
           placeholder="Enter the company goals" required></textarea>
         <span> You can edit it later on</span>
       </div>
 
       <div class="form-group ">
         <label for="address">Company Address</label>
-        <input name="address" type="text" class="form-control" id="inputLastName" placeholder="Enter the company address" required>
+        <input name="address" type="text" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="inputLastName" placeholder="Enter the company address" required>
       </div>
 
       <div class="form-group">
         <label for="email">Company Email</label>
-        <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter the company email" required>
+        <input name="email" type="email" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="inputEmail" placeholder="Enter the company email" required>
       </div>
 
       <div class="form-group">
         <label for="website">Company Website</label>
-        <input name="website" type="text" class="form-control" id="inputEmail" placeholder="Enter the company website" required>
+        <input name="website" type="text" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="inputEmail" placeholder="Enter the company website" required>
       </div>
 
       <div class="form-group">
         <label for="password">Company Password</label>
-        <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Enter the company password" required>
+        <input name="password" type="password" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="inputPassword" placeholder="Enter the company password" required>
       </div>
 
       <div class="form-group">
         <label for="inputSecurityQues">Security Question</label>
-        <select id="inputSecurityQues" class="form-control">
+        <select id="inputSecurityQues" class="form-control shadow-sm p-3 mb-2 bg-white rounded">
           <option selected>Select Security Question</option>
           <option>...</option>
         </select>
@@ -102,7 +102,7 @@
 
       <div class="form-group">
         <label for="inputSecurityAns">Answer Security Question</label>
-        <input type="text" class="form-control" id="inputSecurityAns" placeholder="Answer your security question">
+        <input type="text" class="form-control shadow-sm p-3 mb-2 bg-white rounded" id="inputSecurityAns" placeholder="Answer your security question">
       </div>
 
       <div class="form-group">
@@ -114,7 +114,7 @@
         </div>
 
       </div>
-      <input type="submit" class="btn btn-info btn-block">Create Account</input>
+      <button id="btn-submit" type="submit" class="btn btn-info btn-block">Create Account</button>
     </form>
     <!--end form-->
 
