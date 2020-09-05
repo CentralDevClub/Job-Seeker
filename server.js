@@ -76,16 +76,6 @@ router.get('/login',(req,res)=>{
 	res.render('login',{sess:sess,status:'ok'});
 });
 
-router.get('/profile/company',(req,res)=>{
-	sess = req.session;
-	res.render('profile-company',{sess:sess});
-});
-
-router.get('/profile/employer',(req,res)=>{
-	sess = req.session;
-	res.render('profile-employer',{sess:sess});
-});
-
 router.get('/login/employer',(req,res)=>{
 	sess = req.session;
 	res.render('login-employer',{sess:sess,status:'ok'});
@@ -217,8 +207,8 @@ router.post('/login/company',urlencoded,(req,res)=>{
 			if(data){
 				sess.company = true;
 				db.select('*').from('companies').where({email:company.email}).then(comp=>{
-					sess.user = comp[0],
-					sess.email = comp[0].email,
+					sess.user = comp[0];
+					sess.email = comp[0].email;
 					res.redirect('/profile');
 				});
 			} else{

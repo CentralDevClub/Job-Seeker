@@ -1,0 +1,88 @@
+<div class="logo-icons alert alert-success">
+    <strong>Hi <%= sess.user.name %>!</strong>
+    <p>You can manage your profile here</p>
+</div>
+
+<div id="main" class="container">
+    <div class="container">
+        <div class="container d-flex flex-column align-items-center py-4">
+            <div class="row">
+                <div class="col" style="text-align: center;">
+                    <img id="fotoprofil" src="https://i.kym-cdn.com/photos/images/facebook/001/250/216/305.jpg" alt="..." class="rounded-circle">
+                    <h1><%= sess.user.name %></h1>
+                    <p><%= sess.user.email %></p>
+                    <p><%= sess.user.website %></p>
+                    <p><%= sess.user.address %></p>
+                    <p><%= sess.user.description %></p>
+                    <p><%= sess.user.goal %></p>
+                    <p><%= sess.user.joined %></p>
+                </div>
+            </div>
+
+            <div class="container mt-3">
+                <form method="POST" id="from-register" action="/register-employer">
+                    <div class="form-group">
+                        <label for="username">Company Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" name="company-name"
+                            placeholder="Enter your firstname">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Company Email</label>
+                        <input type="email" class="form-control" name="company-email" id="inputEmail"
+                            placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword">Company Password</label>
+                        <div class="mata">
+                            <input type="password" class="form-control" id="inputPassword" name="company-password"
+                                placeholder="Enter your password">
+                            <div class="eye">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-2">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo-icons" style="height: 5vmax;">
+            <h3>Company Profile</h3>
+        </div>
+
+        <div class="container mt-3">
+            <form method="POST" id="from-register" action="/register-employer">
+                <div class="form-group">
+                    <label for="username">Company Address</label>
+                    <input type="text" class="form-control" id="inputFirstName" name="company-name"
+                        placeholder="Enter your Company Address">
+                </div>
+
+                <div class="form-group">
+                    <label for="Company Goals">Company Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Enter your Company Description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Number of Employer</label>
+                    <input type="text" class="form-control" id="inputFirstName" name="company-name"
+                        placeholder="Enter your Number of Employer">
+                </div>
+
+                <div class="form-group">
+                    <label for="Company Goals">Company Goals</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Enter your Company Goals"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-2">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
