@@ -76,6 +76,16 @@ router.get('/login',(req,res)=>{
 	res.render('login',{sess:sess,status:'ok'});
 });
 
+router.get('/profile/company',(req,res)=>{
+	sess = req.session;
+	res.render('profile-company',{sess:sess});
+});
+
+router.get('/profile/employer',(req,res)=>{
+	sess = req.session;
+	res.render('profile-employer',{sess:sess});
+});
+
 router.get('/login/employer',(req,res)=>{
 	sess = req.session;
 	res.render('login-employer',{sess:sess,status:'ok'});
@@ -96,7 +106,7 @@ router.get('/postjob',(req,res)=>{
 	res.render('postjob',{sess:sess});
 });
 
-router.get('/register-employer',(req,res)=>{
+router.get('/register/employer',(req,res)=>{
 	sess = req.session;
 	res.render('register-employer',{sess:sess,status:'ok'});
 });
