@@ -20,6 +20,28 @@
 
 	<%- include('templates/navbar'); -%>
 	<% if (sess.company) {%>
+		<% if (status == 'ok'){ %>
+			<div class="alert alert-success">
+				<div class="row">
+					<div class="col">
+						<strong>Success</strong>
+						<p>Your job sucessfully posted</p>
+					</div>
+				</div>
+			</div>
+		<% } else if (status == 'no'){ %>
+			<div class="alert alert-danger">
+				<div class="row">
+					<div class="col">
+						<strong>Failed</strong>
+						<p>Your job cannot be uploaded</p>
+					</div>
+				</div>
+			</div>
+		<% } else { %>
+			<div></div>
+		<% } %>
+
 		<!-- Jumbotron -->
 		<div class="jumbotron-categories">
 			<h1 class="jumbotron-title">Post Your Job</h1>
@@ -35,18 +57,18 @@
 				<!-- Form Section -->
 				<div class="col-md-7 postjob-form">
 					<p>Please fill the requirements</p>
-					<form action="" method="POST">
+					<form action="/postjob" method="POST">
 
 						<div class="form-group">
-							<label for="form-job-title">1. Job Title</label>
-							<input type="text" class="form-control" id="form-job-title" placeholder="Enter your job title">
+							<label for="title">1. Job Title</label>
+							<input type="text" name="title" class="form-control" id="form-job-title" placeholder="Enter your job title">
 						</div>
 
 						<div class="form-group">
 							<label for="form-job-category">2. Job Category</label>
 							<div class="row" id="form-job-category">
 								<div class="col-md-4 col-sm-4">
-									<select class="form-control">
+									<select class="form-control" name="category_1">
 										<option class="postjob-select">-- Select Category --</option>
 										<option>Graphic Design</option>
 										<option>Programming</option>
@@ -56,7 +78,7 @@
 									</select>
 								</div>
 								<div class="col-md-4 col-sm-4">
-									<select class="form-control">
+									<select class="form-control" name="category_2">
 										<option class="postjob-select">-- Select Skill --</option>
 										<option>Illustration</option>
 										<option>Logo</option>
@@ -66,7 +88,7 @@
 									</select>
 								</div>
 								<div class="col-md-4 col-sm-4">
-									<select class="form-control">
+									<select class="form-control" name="category_3">
 										<option class="postjob-select">-- Select Expertise --</option>
 										<option>Flat Design</option>
 										<option>Realistic</option>
@@ -79,37 +101,37 @@
 						</div>
 
 						<div class="form-group">
-							<label for="form-job-desc">3. Job Description</label>
-							<textarea class="form-control" name="" id="form-job-desc" cols="30" rows="10"
+							<label for="description">3. Job Description</label>
+							<textarea class="form-control" name="description" id="form-job-desc" cols="30" rows="10"
 								placeholder="Enter job description"></textarea>
 						</div>
 
 						<div class="form-group">
-							<label for="form-job-qualifications">4. Job Qualifications</label>
-							<input type="text" class="form-control mb-1" id="form-job-qualifications"
+							<label for="qualification">4. Job Qualifications</label>
+							<input type="text" name="qualification" class="form-control mb-1" id="form-job-qualifications"
 								placeholder="Enter qualification">
 							<a href="#" class="form-p">Add more qualification</a>
 						</div>
 
 						<div class="form-group">
-							<label for="form-job-comdesc">5. Job task</label>
-							<textarea class="form-control mb-1" name="" id="form-job-comdesc" cols="30" rows="5"
+							<label for="task">5. Job task</label>
+							<textarea class="form-control mb-1" name="task" id="form-job-comdesc" cols="30" rows="5"
 								placeholder="Enter company description">Autofilled from data entered when register account. dolor sit, amet consectetur adipisicing elit. Laudantium doloremque in neque recusandae, iste magni non nostrum saepe quis. Animi ipsum sequi quas placeat velit dolor iste, similique voluptates quaerat tempora, suscipit consequuntur provident vero dolore debitis veniam est.</textarea>
 							<a href="#" class="form-p">Edit Company Description here</a>
 						</div>
 
 						<div class="form-group">
-							<label for="form-job-comgoals">6. Requirement</label>
-							<textarea class="form-control mb-1" name="" id="form-job-comgoals" cols="30" rows="5"
+							<label for="requirement">6. Requirement</label>
+							<textarea class="form-control mb-1" name="requirement" id="form-job-comgoals" cols="30" rows="5"
 								placeholder="Enter company description">Autofilled from data entered when register account. dolor sit, amet consectetur adipisicing elit. Laudantium doloremque in neque recusandae, iste magni non nostrum saepe quis. Animi ipsum sequi quas placeat velit dolor iste, similique voluptates quaerat tempora, suscipit consequuntur provident vero dolore debitis veniam est.</textarea>
 							<a href="#" class="form-p">Edit Company Goals here</a>
 						</div>
 
 						<div class="form-group">
-							<label for="form-job-salary">7. Salary</label>
+							<label for="salary_type">7. Salary</label>
 							<div class="row" id="form-job-salary">
 								<div class="col-md-4 col-sm-6">
-									<select class="form-control">
+									<select class="form-control" name="salary_type">
 										<option class="postjob-select">-- Select Payment --</option>
 										<option>Hourly</option>
 										<option>Dayly</option>
@@ -118,16 +140,16 @@
 									</select>
 								</div>
 								<div class="col-md-4 col-sm-6">
-									<input class="form-control" type="number" placeholder="$700">
+									<input class="form-control" name="salary_price" type="number" placeholder="$700">
 								</div>
 							</div>
 						</div>
 
 						<div class="row form-buttons mt-5">
-							<div class="col-md-6">
+							<!-- Sementara pengembangan draft fitur ditunda -->
+							<!-- <div class="col-md-6">
 								<button type="submit" class="btn-draft">Save Draft</button>
-							</div>
-
+							</div> -->
 							<div class="col-md-6">
 								<button type="submit" class="btn-post">Post Job</button>
 							</div>
