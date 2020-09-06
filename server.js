@@ -93,7 +93,7 @@ router.get('/joblist',(req,res)=>{
 
 router.get('/postjob',(req,res)=>{
 	sess = req.session;
-	res.render('postjob',{sess:sess});
+	res.render('postjob',{sess:sess,status:'none'});
 });
 
 router.get('/register/employer',(req,res)=>{
@@ -143,6 +143,31 @@ router.post('/register/employer',urlencoded,function(req,res){
 		});
 	})
 });
+
+// Post Job
+router.post('/postjob',urlencoded,(req,res)=>{
+	sess = req.session;
+	const jobdata = req.body;
+	db('jobs').returning('*').insert({
+		company_email:sess.email,
+		title:jobdata.title,
+		category_1:jobdata.category_1,
+		category_2:jobdata.category_2,
+		category_3:jobdata.category_3,
+		description:jobdata.description,
+		qualification:jobdata.qualification,
+		task:jobdata.task,
+		requirement:jobdata.requirement,
+		salary_type:jobdata.salary_type,
+		salary_price:jobdata.salary_price,
+		created: new Date()
+	}).then(user => {
+		res.status(200).render('postjob',{sess:sess,status:'ok'});
+	}).catch(error => {
+		// Catch error untuk register gagal
+		res.status(400).render('postjob',{sess:sess,status:'no'});
+	});
+})
 
 // Register Companies
 router.post('/register/company',urlencoded,(req,res)=>{
