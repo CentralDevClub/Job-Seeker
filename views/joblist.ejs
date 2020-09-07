@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 	<!-- CSSs -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
@@ -13,7 +13,6 @@
 	<link rel="stylesheet" href="/css/style-joblist.css">
 
 	<title>Job List</title>
-
 </head>
 
 <body>
@@ -52,265 +51,54 @@
 	<!-- END OF Search Bar -->
 
 	<div class="container mt-4">
-		<h5>170 job vacancies found</h5>
+		<% var jobs_count = jobs.length %>
+		<h5><%= jobs_count %> job vacancies found</h5>
 	</div>
 
 	<!-- Job Cards -->
 	<div class="container job-cards mt-2">
-
-		<div class="row">
+		<% jobs.forEach(function(job,i){ %>
 			<div class="col-md-3 col-sm-6">
 				<div class="job-card">
 					<div class="job-card-title">
-						<h5>UI Designer</h5>
-						<p>Tangerang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;Now</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>UX Designer</h5>
-						<p>Semarang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;Now</p>
-					</div>	
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Programmer</h5>
-						<p>Jakarta, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;Now</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Accountant</h5>
-						<p>Temanggung, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;1h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="row">
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>UX Researcher</h5>
-						<p>Semarang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;1h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Java Developer</h5>
-						<p>Solo, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;1h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Machine Learning</h5>
-						<p>Tangerang, Indonesia</p>
+						<h5><%= job.title %></h5>
+						<p><%= job.category_1 %></p>
 					</div>
 					<div class="job-card-time">
 						<p><i class="fas fa-clock"></i>&nbsp;2h</p>
 					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
+					<p class="job-card-desc" style="text-overflow: ellipsis"><%= job.description %></p>
 					<button type="button" class="btn-apply">Apply Now</button>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Teacher</h5>
-						<p>Jakarta, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;2h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="row">
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Music Composer</h5>
-						<p>Magelang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;3h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Video Editor</h5>
-						<p>Jakarta, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;3h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Blender Animator</h5>
-						<p>Bandung, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;3h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Nurse</h5>
-						<p>Semarang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;4h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="row">
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Doctor</h5>
-						<p>Sleman, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;4h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Constructor</h5>
-						<p>Tangerang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;4h</p>
-					</div>	
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Lecture</h5>
-						<p>Tangerang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;4h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="job-card">
-					<div class="job-card-title">
-						<h5>Photographer</h5>
-						<p>Tangerang, Indonesia</p>
-					</div>
-					<div class="job-card-time">
-						<p><i class="fas fa-clock"></i>&nbsp;5h</p>
-					</div>
-					<p class="job-card-desc">Lorem ipsum dolor sit, amet con- sectetur adipisicing elit. Laudan- tium doloremque...</p>
-					<button type="button" class="btn-apply">Apply Now</button>
-				</div>
-			</div>
-
-		</div>
-
-
-
+		<% }) %>
 	</div>
 	<!-- END OF Job Cards -->
 
 	<!-- Pagination -->
 	<nav class="nav-pagination d-flex justify-content-center mt-5" aria-label="Page navigation example">
-	  <ul class="pagination">
-	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
-	        <span aria-hidden="true">&laquo;</span>
-	        <span class="sr-only">Previous</span>
-	      </a>
-	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link active" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
-	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
-	        <span aria-hidden="true">&raquo;</span>
-	        <span class="sr-only">Next</span>
-	      </a>
-	    </li>
-	  </ul>
+		<ul class="pagination">
+			<li class="page-item">
+				<a class="page-link" href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+					<span class="sr-only">Previous</span>
+				</a>
+			</li>
+			<li class="page-item"><a class="page-link active" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item"><a class="page-link" href="#">4</a></li>
+			<li class="page-item"><a class="page-link" href="#">5</a></li>
+			<li class="page-item">
+				<a class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					<span class="sr-only">Next</span>
+				</a>
+			</li>
+		</ul>
 	</nav>
 	<!-- END OF Pagination -->
-	
+
 	<!-- Footer -->
 	<%- include('templates/footer'); -%>
 	<!-- END OF Footer -->

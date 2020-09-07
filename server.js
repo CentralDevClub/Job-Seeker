@@ -88,12 +88,19 @@ router.get('/login/company',(req,res)=>{
 
 router.get('/joblist',(req,res)=>{
 	sess = req.session;
-	res.render('joblist',{sess:sess});
+	db.select('*').from('jobs').then(jobs => {
+		res.render('joblist',{sess:sess,jobs:jobs});
+	});
 });
 
 router.get('/postjob',(req,res)=>{
 	sess = req.session;
 	res.render('postjob',{sess:sess,status:'none'});
+});
+
+router.get('/portofolio',(req,res)=>{
+	sess = req.session;
+	res.render('portofolio',{sess:sess,status:'none'});
 });
 
 router.get('/register/employer',(req,res)=>{
