@@ -1,0 +1,110 @@
+*{
+    margin:0;
+}
+
+@font-face{
+	font-family: montserrat;
+	src: url('./font/Montserrat-Light.ttf');
+}
+@font-face{
+	font-family: montserrat;
+	src: url('./font/Montserrat-Bold.ttf');
+	font-weight: bold;
+}
+@font-face{
+	font-family: roboto;
+	src: url('./font/Roboto-Medium.ttf');
+}
+
+body{
+    font-family: montserrat;
+}
+
+
+.logo-icons{
+    display: flex;
+    flex-direction: column;
+    height: 20vmax;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: montserrat;
+    font-style: italic;
+    
+}
+
+.logo-icons h1{
+    width: 60%;
+    font-size: 70px;
+    color: #264653ff;
+    font-weight: bolder;
+}
+
+.logo-icons h2{
+    color: rgb(82, 110, 121);
+    width: 80%;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.logo-icons h3{
+    color: #264653ff;
+    width: 100%;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+label{
+    font-weight: bolder;
+}
+
+#main{
+    display: flex;
+    flex-direction: row;
+}
+
+#fotoprofil{
+    box-sizing: border-box;
+    height: 250px;
+    width: 250px;
+}
+
+.mata{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    cursor: pointer;
+}
+
+.eye{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+}
+
+
+@media screen and (max-width: 1100px){
+    #main{
+        display: flex;       
+        width: 100%;
+    }
+    .logo-icons{
+        height: 50vh;
+    }
+    .logo-icons h3{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 768px){
+   #main{
+       flex-direction: column;
+   }
+   .logo-icons h3{
+        margin-top: 14px;
+    }
+}
