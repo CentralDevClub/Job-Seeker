@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- CSSs -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/style-login.css">
+	<link rel="stylesheet" href="/css/all.css">
+	<!-- <script src="https://kit.fontawesome.com/a6b535fb5d.js" crossorigin="anonymous"></script> -->
+	<title>Login</title>
+</head>
+<body>
+    <%- include('templates/navbar'); -%>
+    <% if (sess.company) {%>
+        <div class="row">
+            <div class="col">
+                <h2>Sorry, only employer account can add portfolio</h2>
+            </div>
+        </div>
+    <% } else if (sess.email){ %>
+        <% if(success){ %>
+            <div class="alert alert-success"><strong>Portfolio successfuly added to your profile</strong></div>
+        <% } else if(success == false){ %>
+            <div class="alert alert-danger"><strong>Failed to add portofilo</strong></div>
+        <% } %>
+        <form action="/portfolio" method="POST">
+            <div class="col">
+                <div class="row">
+                    <label for="name">Project Name</label>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="Project name" name="name">
+                </div>
+                <div class="row">
+                    <label for="description">Project Description</label>
+                </div>
+                <div class="row">
+                    <textarea name="description" cols="30" rows="10" placeholder="Project description"></textarea>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary">Add Portfolio</button>
+                </div>
+            </div>
+        </form>
+    <% }else{ %>
+        <h1>Sorry, user not found</h1>
+    <% } %>
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/js/script-login.js"></script>
+</body>
+</html>
