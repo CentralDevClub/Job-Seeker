@@ -98,9 +98,9 @@ router.get('/postjob',(req,res)=>{
 	res.render('postjob',{sess:sess,status:'none'});
 });
 
-router.get('/portofolio',(req,res)=>{
+router.get('/portfolio',(req,res)=>{
 	sess = req.session;
-	res.render('portofolio',{sess:sess,status:'none'});
+	res.render('portfolio',{sess:sess,success:undefined});
 });
 
 router.get('/register/employer',(req,res)=>{
@@ -149,6 +149,26 @@ router.post('/register/employer',urlencoded,function(req,res){
 			});
 		});
 	})
+});
+
+// Post Portfolio
+router.post('/portfolio',urlencoded,(req,res)=>{
+	sess = req.session;
+	const project = req.body;
+	console.log(project);
+	console.log(sess.email);
+	db('portfolios').returning('*').insert({
+		email:sess.email,
+		project_name:project.name,
+		project_desc:project.description,
+		created:new Date()
+	}).then(user=>{
+		console.log(user);
+		res.status(200).render('portfolio',{sess:sess,success:true})
+	}).catch(error=>{
+		console.log(error);
+		res.status(400).render('portfolio',{sess:sess,success:false})
+	});
 });
 
 // Post Job
