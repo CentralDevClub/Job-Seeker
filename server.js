@@ -1,5 +1,5 @@
 const express = require('express');
-const session = require('express-session');
+const session = require('cookie-session');
 const app = express();
 const router = express.Router();
 const path = require('path');
@@ -25,7 +25,6 @@ app.use(
 			secure:true,
 			maxAge:60000
 		},
-		store: new RedisStore(),
 		secret: 'secret',
 		saveUninitialized: true,
 		resave: false
