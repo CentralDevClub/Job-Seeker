@@ -2,9 +2,6 @@
 	"client": "pg",
 	"useNullAsDefault": true,
 	"connection": {
-		"host" : "localhost",
-		"user" : "philip",
-		"password" : "master",
-		"database" : "jobseeker"
+		"database": "process.env.DATABASE_URL"
 	}
 }
