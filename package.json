@@ -3704,6 +3704,10 @@
   "description": "<p align=\"center\">\r         <img src=\"https://drive.google.com/uc?export=view&id=1aNQG3PJlmzB9OJIRc4wZp9fUanxC8CwR\">\r </p>",
   "version": "1.0.0",
   "main": "server.js",
+  "engines": {
+    "node": "13.8.0",
+    "npm":"6.13.6"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
