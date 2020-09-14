@@ -273,7 +273,9 @@ router.post('/login/company',urlencoded,(req,res)=>{
 });
 
 // Running Server
-const port = 8000;
 app.use('/',router);
-app.listen(port);
-console.log(`Website Successfully Deployed! Go to : http//localhost:${port}`);
+
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+    console.log("App is running on port " + port);
+});
