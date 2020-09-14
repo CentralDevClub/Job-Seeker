@@ -15,8 +15,22 @@ app.use(express.static(path.join(__dirname, '/public')));
 // View engine dengan ejs
 app.set('view engine','ejs');
 
+// Setting proxy
+app.set('trust proxy', 1);
+
 // Session Login (Global session)
-app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+app.use(
+	session({
+		cookie: {
+			secure:true,
+			maxAge:60000
+		},
+		store: new RedisStore(),
+		secret: 'secret',
+		saveUninitialized: true,
+		resave: false
+	})
+);
 var sess;
 
 // BodyParser
