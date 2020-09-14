@@ -3696,4 +3696,26 @@
       "integrity": "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g=="
     }
   }
+},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "job-seeker",
+  "description": "<p align=\"center\">\r         <img src=\"https://drive.google.com/uc?export=view&id=1aNQG3PJlmzB9OJIRc4wZp9fUanxC8CwR\">\r </p>",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhilipPurwoko/Job-Seeker.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "CentralDevClub",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PhilipPurwoko/Job-Seeker/issues"
+  },
+  "homepage": "https://github.com/PhilipPurwoko/Job-Seeker#readme"
 }
