@@ -2,6 +2,8 @@
 	"client": "pg",
 	"useNullAsDefault": true,
 	"connection": {
-		"database": "process.env.DATABASE_URL"
+		"database": "process.env.DATABASE_URL",
+		"user" : "process.env.DATABASE_USERNAME",
+		"password":"process.env.DATABASE_PASSWORD"
 	}
 }
