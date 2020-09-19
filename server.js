@@ -1,13 +1,18 @@
 const express = require('express');
 const session = require('cookie-session');
-const app = express();
-const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
 const knex = require('knex');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
+
+const app = express();
+const router = express.Router();
 const saltRounds = 10;
 
+// BodyParser
+app.use(bodyParser.json());
+urlencoded = bodyParser.urlencoded({ extended: false });
+app.use(urlencoded);
 
 // Folder public untuk static import
 app.use(express.static(path.join(__dirname, '/public')));
@@ -30,12 +35,8 @@ app.use(
 		resave: false
 	})
 );
-var sess;
 
-// BodyParser
-app.use(bodyParser.json());
-urlencoded = bodyParser.urlencoded({ extended: false });
-app.use(urlencoded);
+var sess;
 
 // PostgreSQL Database Connection
 const db_setting = require("./setting.json");
