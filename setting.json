@@ -1,8 +1,9 @@
 {
 	"client":"pg",
-	"useNullAsDefault": true,
-	"connectionString": "process.env.DATABASE_URL",
-	"ssl": {
-		"rejectUnauthorized": false
+	"connection": {
+	    "host" : "ec2-54-160-202-3.compute-1.amazonaws.com",
+	    "user" : "sninxdrggcwdqw",
+	    "password" : "b155b3d389cceae0933f8606d653ce5b46487e06188e2256f04d508b4c5616d6",
+	    "database" : "d5bcpv2mhmppoc"
 	}
 }
