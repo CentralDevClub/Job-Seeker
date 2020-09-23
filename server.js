@@ -129,7 +129,7 @@ router.get('/register/company',(req,res)=>{
 
 // POST request
 router.post('/profile',urlencoded,(req,res)=>{
-	sess = req.session.destroy();
+	sess = null;
 	res.redirect('/');
 });
 
