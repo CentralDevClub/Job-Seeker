@@ -1,13 +1,18 @@
 const express = require('express');
-const session = require('express-session');
-const app = express();
-const router = express.Router();
+const session = require('cookie-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const knex = require('knex');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
+
+const app = express();
+const router = express.Router();
 const saltRounds = 10;
 
+// BodyParser
+app.use(bodyParser.json());
+urlencoded = bodyParser.urlencoded({ extended: false });
+app.use(urlencoded);
 
 // Folder public untuk static import
 app.use(express.static(path.join(__dirname, '/public')));
@@ -15,14 +20,23 @@ app.use(express.static(path.join(__dirname, '/public')));
 // View engine dengan ejs
 app.set('view engine','ejs');
 
-// Session Login (Global session)
-app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
-var sess;
+// Setting proxy
+app.set('trust proxy', 1);
 
-// BodyParser
-app.use(bodyParser.json());
-urlencoded = bodyParser.urlencoded({ extended: false });
-app.use(urlencoded);
+// Session Login (Global session)
+app.use(
+	session({
+		cookie: {
+			secure:true,
+			maxAge:60000
+		},
+		secret: 'secret',
+		saveUninitialized: true,
+		resave: false
+	})
+);
+
+var sess;
 
 // PostgreSQL Database Connection
 const db_setting = require("./setting.json");
@@ -115,7 +129,8 @@ router.get('/register/company',(req,res)=>{
 
 // POST request
 router.post('/profile',urlencoded,(req,res)=>{
-	sess = req.session.destroy();
+	req.session = null;
+	sess = null;
 	res.redirect('/');
 });
 
@@ -273,7 +288,9 @@ router.post('/login/company',urlencoded,(req,res)=>{
 });
 
 // Running Server
-const port = 8000;
 app.use('/',router);
-app.listen(port);
-console.log(`Website Successfully Deployed! Go to : http//localhost:${port}`);
+
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+    console.log("App is running on port " + port);
+});

@@ -1,10 +1,9 @@
 {
-	"client": "pg",
-	"useNullAsDefault": true,
+	"client":"pg",
 	"connection": {
-		"host" : "localhost",
-		"user" : "philip",
-		"password" : "master",
-		"database" : "jobseeker"
+	    "host" : "ec2-54-160-202-3.compute-1.amazonaws.com",
+	    "user" : "sninxdrggcwdqw",
+	    "password" : "b155b3d389cceae0933f8606d653ce5b46487e06188e2256f04d508b4c5616d6",
+	    "database" : "d5bcpv2mhmppoc"
 	}
 }
