@@ -24,7 +24,11 @@
 		<% } else if (sess.email){ %>
 			<%- include('templates/profile-employer'); -%>
 			<form method="POST" action="/profile">
-				<button class="btn btn-danger" type="submit">Log out</button>
+				<div class="row">
+					<div class="col">
+						<button class="btn btn-danger btn-block" type="submit">Log out</button>
+					</div>
+				</div>
 			</form>
 		<% }else{ %>
 			<h1>Sorry, user not found</h1>

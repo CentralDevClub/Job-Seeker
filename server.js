@@ -77,7 +77,15 @@ router.get('/categories',function(req,res){
 
 router.get('/profile',(req,res)=>{
 	sess = req.session;
-	res.render('profile',{sess:sess});
+	if (sess.company){
+		res.render('profile',{sess:sess});
+	} else if (sess.email){
+		db.select('*').from('portfolios').where({email : sess.email}).then(portfolio => {
+			res.render('profile',{sess:sess,portfolio:portfolio});
+		});
+	} else {
+		res.render('profile',{sess:sess});
+	};
 });
 
 router.get('/register',(req,res)=>{

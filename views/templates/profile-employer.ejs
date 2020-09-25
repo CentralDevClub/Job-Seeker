@@ -8,7 +8,8 @@
         <div class="container d-flex flex-column align-items-center py-4">
             <div class="row">
                 <div class="col" style="text-align: center;">
-                    <img id="fotoprofil" src="https://i.kym-cdn.com/photos/images/facebook/001/250/216/305.jpg" alt="..." class="rounded-circle ">
+                    <img id="fotoprofil" src="https://i.kym-cdn.com/photos/images/facebook/001/250/216/305.jpg"
+                        alt="..." class="rounded-circle ">
                     <h1><%= sess.user.username %></h1>
                     <p><%= sess.user.email %></p>
                     <p><%= sess.user.joined %></p>
@@ -92,16 +93,24 @@
                 <div class="d-flex flex-row justify-content-around">
                     <div class="file-field" style="width: 200px;">
                         <div class="z-depth-1-half mb-4">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col" style="border: 2px dashed black;text-align: center;">
                                     <strong>Empty</strong>
                                     <p>No portofolio</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- <img src="https://img.pngio.com/dashed-line-square-png-free-download-dashed-line-png-500_500.png" class="img-fluid" alt="example placeholder"> -->
                             <!-- <input type="file"> -->
                             <div class="row">
-                                <button class="btn btn-primary"><a style="color: white;text-decoration: none;" href="/portfolio">Add portofolio</a></button>
+                                <% portfolio.forEach(function(portfolio,i){ %>
+                                    <div class="col" style="background-color: aliceblue">
+                                        <strong><%= portfolio.project_name %></strong>
+                                        <p><%= portfolio.project_desc %></p>
+                                    </div>
+                                <% }) %>
+                                <div class="col">
+                                    <button class="btn btn-primary"><a style="color: white;text-decoration: none;" href="/portfolio">Add portofolio</a></button>
+                                </div>
                             </div>
                         </div>
                     </div>
