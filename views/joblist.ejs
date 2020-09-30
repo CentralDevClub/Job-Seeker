@@ -58,19 +58,20 @@
 	<!-- Job Cards -->
 	<div class="container job-cards mt-2">
 		<% jobs.forEach(function(job,i){ %>
-			<div class="col-md-3 col-sm-6">
+			<form id="<%= job.id %>" action="/joblist" method="POST">
 				<div class="job-card">
 					<div class="job-card-title">
-						<h5><%= job.title %></h5>
+						<input type="hidden" name='id' value="<%= job.id %>">
+						<strong><%= job.title %></strong>
 						<p><%= job.category_1 %></p>
 					</div>
 					<div class="job-card-time">
 						<p><i class="fas fa-clock"></i>&nbsp;2h</p>
 					</div>
 					<p class="job-card-desc" style="text-overflow: ellipsis"><%= job.description %></p>
-					<button type="button" class="btn-apply">Apply Now</button>
+					<input type="submit" class="btn-apply" value="Apply Now">
 				</div>
-			</div>
+			</form>
 		<% }) %>
 	</div>
 	<!-- END OF Job Cards -->

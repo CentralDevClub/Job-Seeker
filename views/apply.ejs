@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<!-- CSSs -->
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/all.css">
+        <title>Apply Job</title>
+</head>
+<body>
+    <%- include('templates/navbar'); -%>
+
+    <h2><%= job.title %></h2>
+    <p><%= job.company_email %></p>
+    <div>
+        <span><%= job.category_1 %></span>
+        <span><%= job.category_2 %></span>
+        <span><%= job.category_3 %></span>
+    </div>
+    <p><%= job.description %></p>
+	<p><%= job.qualification %></p>
+    <p><%= job.task %></p>
+    <p><%= job.requirement%></p>
+    <p><%= job.salary_type %></p>
+	<p><%= job.salary_price %></p>
+    <p><%= job.created %></p>
+    
+    <form action="apply" method="POST">
+        <input type="hidden" name="job_id" value="<%= job.id %>">
+        <input type="hidden" name="employer" value="<%= sess.email %>">
+        <input type="checkbox" required><span>I agree all the requirement</span>
+        <input type="submit" value="Join the job">
+    </form>
+
+    <!-- JQuery and JSs -->
+    <script type="text/javascript" src="/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</body>
+</html>
