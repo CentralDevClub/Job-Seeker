@@ -120,6 +120,11 @@ router.get('/postjob',(req,res)=>{
 	res.render('postjob',{sess:sess,status:'none'});
 });
 
+router.get('/joblist/apply',(req,res)=>{
+	sess = req.session;
+	res.render('apply',{sess:sess});
+});
+
 router.get('/portfolio',(req,res)=>{
 	sess = req.session;
 	res.render('portfolio',{sess:sess,success:undefined});
@@ -218,6 +223,31 @@ router.post('/postjob',urlencoded,(req,res)=>{
 		res.status(400).render('postjob',{sess:sess,status:'no'});
 	});
 })
+
+// Menuju halaman detail pekerjaan
+router.post('/joblist',urlencoded,(req,res)=>{
+	sess = req.session;
+	if (sess.email){
+		db.select('*').from('jobs').where({id:req.body.id}).then(job => {
+			res.status(200).render('apply',{sess:sess,job:job[0]})
+		});
+	} else {
+		db.select('*').from('jobs').then(jobs => {
+			res.status(200).res.render('joblist',{sess:sess,jobs:jobs});
+		});
+	}
+});
+
+// Mendaftar pekerjaan
+router.post('/apply',urlencoded,(req,res) => {
+	sess = req.session;
+	db('working').returning('*').insert({
+		job_id:req.body.job_id,
+		employer:req.body.employer
+	}).then(comp=>{
+		res.redirect('/profile')
+	});
+});
 
 // Register Companies
 router.post('/register/company',urlencoded,(req,res)=>{
